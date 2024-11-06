@@ -4,19 +4,19 @@ import img from "../Navbar/logo.png";
 const Navbar = () => {
   const navOptions = (
     <ul className="flex gap-6">
-      <li className="hover:text-gray-300 transition-colors duration-200">
+      <li className="hover:text-yellow-100 transition-colors duration-200">
         <Link to="/">Home</Link>
       </li>
-      <li className="hover:text-gray-300 transition-colors duration-200">
+      <li className="hover:text-yellow-100 transition-colors duration-200">
         <Link to="/brands">Brands</Link>
       </li>
-      <li className="hover:text-gray-300 transition-colors duration-200">
+      <li className="hover:text-yellow-100 transition-colors duration-200">
         <Link to="/collections">Collections</Link>
       </li>
-      <li className="hover:text-gray-300 transition-colors duration-200">
+      <li className="hover:text-yellow-100 transition-colors duration-200">
         <Link to="/cart">Cart</Link>
       </li>
-      <li className="hover:text-gray-300 transition-colors duration-200">
+      <li className="hover:text-yellow-100 transition-colors duration-200">
         <Link to="/login">Login</Link>
       </li>
     </ul>
