@@ -4,7 +4,7 @@ import img3 from "./../../../../../assets/images/logo3.jpeg";
 import img4 from "./../../../../../assets/images/logo4.jpeg";
 import img5 from "./../../../../../assets/images/logo5.png";
 
-const Brands = () => {
+const Brandscategory = () => {
   return (
     <div className="flex gap-4 pt-5 justify-center">
       <img src={img1} alt="" />
@@ -16,4 +16,4 @@ const Brands = () => {
   );
 };
 
-export default Brands;
+export default Brandscategory;

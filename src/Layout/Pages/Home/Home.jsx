@@ -1,11 +1,11 @@
-import Brands from "./Home/Brands/Brands";
+import Brandscategory from "./Home/Brandscategory/Brandscategory";
 import Hero from "./Home/Hero/Hero";
 
 const Home = () => {
   return (
     <div>
       <Hero />
-      <Brands />
+      <Brandscategory />
     </div>
   );
 };
