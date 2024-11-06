@@ -23,8 +23,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="p-2 bg-[rgba(66,42,43,255)] text-[rgba(253,223,147,255)]">
-      <div className="flex items-center justify-between max-w-7xl mx-auto">
+    <div className="p-2 ">
+      <div className="flex items-center justify-between ">
         <Link to="/" className="flex items-center">
           <img src={img} alt="logo" className="w-24" />
         </Link>
