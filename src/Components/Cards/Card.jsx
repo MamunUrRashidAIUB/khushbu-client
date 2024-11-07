@@ -1,4 +1,4 @@
-const Card = ({ name, image, title }) => {
+const Card = ({ name, image, title, brand }) => {
   return (
     <div className="bg-amber-950 w-96 shadow-xl rounded-lg overflow-hidden flex flex-col">
       <figure className="px-10  pt-10">
@@ -10,6 +10,9 @@ const Card = ({ name, image, title }) => {
         </h2>
         <p className="text-sm text-gray-300 mb-4 h-16 overflow-hidden">
           {title}
+        </p>
+        <p className="text-sm text-gray-300 mb-4 h-16 overflow-hidden">
+          {brand}
         </p>
         <div className="card-actions mt-auto">
           <button className="btn btn-primary rounded-lg">Buy Now</button>
