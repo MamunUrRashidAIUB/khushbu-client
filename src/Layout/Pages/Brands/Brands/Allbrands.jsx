@@ -4,7 +4,6 @@ const Allbrands = () => {
   const [products] = useProducts();
   return (
     <div className="flex mx-auto">
-      <div>filter</div>
       <div className="grid grid-cols-3  gap-4">
         {products.map((product) => (
           <Card
