@@ -1,11 +1,17 @@
+
 import Card from "../../../../Components/Cards/Card";
 import useProducts from "../../../../Hooks/useProducts";
-const Allbrands = () => {
+
+const Allbrands = ({ filteredProducts }) => {
   const [products] = useProducts();
+
+  // Get the filtered products
+  const productsToDisplay = filteredProducts(products);
+
   return (
     <div className="flex mx-auto">
-      <div className="grid grid-cols-3  gap-4">
-        {products.map((product) => (
+      <div className="grid grid-cols-3 gap-4">
+        {productsToDisplay.map((product) => (
           <Card
             key={product.id}
             name={product.name}
