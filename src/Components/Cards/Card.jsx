@@ -11,7 +11,9 @@ const Card = ({ name, image, title, brand }) => {
         <p className="text-sm   overflow-hidden">{title}</p>
         <p className="text-sm overflow-hidden">{brand}</p>
         <div className="card-actions mt-auto">
-          <button className="btn btn-primary rounded-lg">Buy Now</button>
+          <button className="bg-orange-400 p-2 text-black rounded-full">
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

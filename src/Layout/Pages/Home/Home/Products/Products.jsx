@@ -19,8 +19,8 @@ const Products = () => {
         {uniqueCategories.map((category, index) => (
           <Tab
             key={index}
-            className="mx-4 cursor-pointer px-4 py-2 rounded-lg hover:bg-gray-200 transition duration-300"
-            selectedClassName="bg-gray-300 font-bold"
+            className="mx-4 cursor-pointer px-4 py-2 rounded-lg  transition duration-300"
+            selectedClassName="bg-orange-400 text-black font-bold"
           >
             {category}
           </Tab>
