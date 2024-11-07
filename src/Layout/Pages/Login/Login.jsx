@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Login = () => {
   return (
     <div className="hero  min-h-screen">
@@ -38,11 +40,13 @@ const Login = () => {
                   Forgot password?
                 </a>
               </label>
-              <a href="">
-                {" "}
-                <span>Don't have an account? </span>
-                <span className="text-green-400">Signup Now</span>
-              </a>
+              <Link to="/signup">
+                <a href="">
+                  {" "}
+                  <span>Don't have an account? </span>
+                  <span className="text-green-400">Signup Now</span>
+                </a>
+              </Link>
             </div>
             <div className="form-control mt-6">
               <button className="btn bg-orange-950">Login</button>
