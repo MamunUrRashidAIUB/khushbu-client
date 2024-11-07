@@ -2,7 +2,7 @@ import Allbrands from "./Brands/Allbrands";
 
 const Brands = () => {
   return (
-    <div>
+    <div className="flex">
       <Allbrands></Allbrands>
     </div>
   );
