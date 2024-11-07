@@ -14,7 +14,7 @@
   {
     "id": 2,
     "name": "Perfume 2",
-    "brand": "Brand B",
+    "brand": "Brand A",
     "price": 95.0,
     "description": "A spicy, bold scent.",
     "size": "100ml",
@@ -26,7 +26,7 @@
   {
     "id": 3,
     "name": "Perfume 3",
-    "brand": "Brand C",
+    "brand": "Brand A",
     "price": 120.0,
     "description": "A sweet floral fragrance.",
     "size": "75ml",

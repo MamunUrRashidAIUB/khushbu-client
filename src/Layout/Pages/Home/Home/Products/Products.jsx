@@ -38,6 +38,7 @@ const Products = () => {
                   name={filteredProduct.name}
                   image={filteredProduct.image}
                   title={filteredProduct.description}
+                  price={filteredProduct.price}
                 />
               ))}
           </ul>

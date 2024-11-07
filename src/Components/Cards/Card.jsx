@@ -1,4 +1,4 @@
-const Card = ({ name, image, title, brand }) => {
+const Card = ({ name, image, title, brand, price }) => {
   return (
     <div className="bg-amber-950 w-60 shadow-xl rounded-lg overflow-hidden flex flex-col">
       <figure className="  mx-auto pt-10">
@@ -10,6 +10,10 @@ const Card = ({ name, image, title, brand }) => {
         </h2>
         <p className="text-sm   overflow-hidden">{title}</p>
         <p className="text-sm overflow-hidden">{brand}</p>
+        <p className="text-sm overflow-hidden">
+          <span>Price : $</span>
+          {price}
+        </p>
         <div className="card-actions mt-auto">
           <button className="bg-orange-400 p-2 text-black rounded-full">
             Add to cart

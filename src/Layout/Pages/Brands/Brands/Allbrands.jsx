@@ -1,4 +1,3 @@
-
 import Card from "../../../../Components/Cards/Card";
 import useProducts from "../../../../Hooks/useProducts";
 
@@ -18,6 +17,7 @@ const Allbrands = ({ filteredProducts }) => {
             image={product.image}
             title={product.description}
             brand={product.brand}
+            price={product.price}
           />
         ))}
       </div>
