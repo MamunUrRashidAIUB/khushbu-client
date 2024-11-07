@@ -1,6 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useProducts from "../../../../../Hooks/useProducts";
+import Card from "../../../../../Components/Cards/Card";
 
 const Products = () => {
   const [products] = useProducts();
@@ -23,12 +24,16 @@ const Products = () => {
 
       {uniqueCategories.map((category, index) => (
         <TabPanel key={index} className="text-center">
-          <h2>{category} content</h2>
-          <ul className="mt-4">
+          <ul className="mt-4 grid grid-cols-3 gap-3">
             {products
               .filter((product) => product.category === category)
-              .map((filteredProduct, productIndex) => (
-                <li key={productIndex}>{filteredProduct.name}</li>
+              .map((filteredProduct) => (
+                <Card
+                  key={filteredProduct.id}
+                  name={filteredProduct.name}
+                  image={filteredProduct.image}
+                  title={filteredProduct.description}
+                ></Card>
               ))}
           </ul>
         </TabPanel>
