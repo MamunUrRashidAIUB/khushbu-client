@@ -30,9 +30,12 @@ const Navbar = () => {
 
       {user ? (
         <>
-          <button onClick={handlelogout} className="btn btn-ghost">
+          <li
+            onClick={handlelogout}
+            className="hover:text-yellow-100 transition-colors duration-200"
+          >
             Logout
-          </button>
+          </li>
         </>
       ) : (
         <>
