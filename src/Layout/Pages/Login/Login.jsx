@@ -1,8 +1,29 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Authcontext } from "../../../providers/AuthProviders";
 
 const Login = () => {
+  const { signin } = useContext(Authcontext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signin(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      navigate(from, { replace: true });
+    });
+  };
+
   return (
-    <div className="hero  min-h-screen">
+    <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -13,13 +34,14 @@ const Login = () => {
           </p>
         </div>
         <div className="card w-full max-w-sm shrink-0 shadow-2xl">
-          <form className="card-body">
+          <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered bg-yellow-950"
                 required
@@ -31,6 +53,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="password"
                 className="input input-bordered bg-yellow-950"
                 required
@@ -40,12 +63,9 @@ const Login = () => {
                   Forgot password?
                 </a>
               </label>
-              <Link to="/signup">
-                <a href="">
-                  {" "}
-                  <span>Don't have an account? </span>
-                  <span className="text-green-400">Signup Now</span>
-                </a>
+              <Link to="/signup" className="label-text-alt link link-hover">
+                <span>Don't have an account? </span>
+                <span className="text-green-400">Signup Now</span>
               </Link>
             </div>
             <div className="form-control mt-6">

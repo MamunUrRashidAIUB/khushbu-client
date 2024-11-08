@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import img from "../Navbar/logo.png";
+import { useContext } from "react";
+import { Authcontext } from "../../../../providers/AuthProviders";
 
 const Navbar = () => {
+  const { user, logout } = useContext(Authcontext);
+  const handlelogout = () => {
+    logout()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const navOptions = (
     <ul className="flex gap-6">
       <li className="hover:text-yellow-100 transition-colors duration-200">
@@ -10,13 +20,27 @@ const Navbar = () => {
       <li className="hover:text-yellow-100 transition-colors duration-200">
         <Link to="/brands">Brands</Link>
       </li>
+      <li className="hover:text-yellow-100 transition-colors duration-200">
+        <Link to="/secret">secret</Link>
+      </li>
 
       <li className=" bg-yellow-400 text-black px-2 rounded-md  transition-colors duration-200">
         <Link to="/cart">Cart</Link>
       </li>
-      <li className="hover:text-yellow-100 transition-colors duration-200">
-        <Link to="/login">Login</Link>
-      </li>
+
+      {user ? (
+        <>
+          <button onClick={handlelogout} className="btn btn-ghost">
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <li className="hover:text-yellow-100 transition-colors duration-200">
+            <Link to="/login">Login</Link>
+          </li>
+        </>
+      )}
     </ul>
   );
 
