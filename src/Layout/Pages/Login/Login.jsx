@@ -21,7 +21,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="email"
-                className="input input-bordered bg-yellow-300"
+                className="input input-bordered bg-yellow-950"
                 required
               />
             </div>
@@ -32,7 +32,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="password"
-                className="input input-bordered  bg-yellow-300"
+                className="input input-bordered bg-yellow-950"
                 required
               />
               <label className="label">
