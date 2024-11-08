@@ -14,12 +14,16 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
-    signin(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-      navigate(from, { replace: true });
-    });
+
+    signin(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error("Login failed:", error.message); // Display specific error message
+      });
   };
 
   return (
@@ -64,7 +68,7 @@ const Login = () => {
                 </a>
               </label>
               <Link to="/signup" className="label-text-alt link link-hover">
-                <span>Don't have an account? </span>
+                <span>Dont have an account? </span>
                 <span className="text-green-400">Signup Now</span>
               </Link>
             </div>
