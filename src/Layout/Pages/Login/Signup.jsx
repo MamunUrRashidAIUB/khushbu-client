@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Authcontext } from "../../../providers/AuthProviders";
 import { useContext } from "react";
-
+import Swal from "sweetalert2";
 const Signup = () => {
   const {
     register,
@@ -16,6 +16,13 @@ const Signup = () => {
     createUser(data.email, data.password).then((result) => {
       const user = result.user;
       console.log(user);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Account Created Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
   };
 
