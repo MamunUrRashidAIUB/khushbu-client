@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiossecure = axios.create({
-  baseURL: "http://localhost:3000/products",
+  baseURL: "http://localhost:3000",
 });
 const useAxiosSecure = () => {
   return axiossecure;
