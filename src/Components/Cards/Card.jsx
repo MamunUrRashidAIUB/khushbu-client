@@ -1,12 +1,13 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
-import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Card = ({ name, image, title, brand, price, id }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const axiossecure = useAxiosSecure();
 
   const handleAddToCart = (product) => {
     if (user && user.email) {
@@ -22,10 +23,19 @@ const Card = ({ name, image, title, brand, price, id }) => {
         totalAmount: product.price, // For simplicity, using the price of one item. You can update it to sum the cart's total value.
       };
 
-      axios
-        .post("http://localhost:3000/carts", cartItem)
+      axiossecure
+        .post("/carts", cartItem)
         .then((res) => {
-          console.log(res.data); // Log the backend response
+          console.log(res.data);
+          if (res.data)
+            Swal.fire({
+              title: "Added to cart",
+              text: "Product added to cart successfully",
+              icon: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#3085d6",
+              confirmButtonText: "Ok",
+            });
         })
         .catch((error) => {
           console.error("Error adding to cart:", error);
