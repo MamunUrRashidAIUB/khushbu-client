@@ -33,7 +33,7 @@ const Card = ({ name, image, title, brand, price, id }) => {
               text: "Product added to cart successfully",
               icon: "success",
               showCancelButton: false,
-              confirmButtonColor: "#3085d6",
+              confirmButtonColor: "#30d630",
               confirmButtonText: "Ok",
             });
         })
@@ -46,7 +46,7 @@ const Card = ({ name, image, title, brand, price, id }) => {
         text: "Please login to add to cart",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#1cc475",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, login",
       }).then((result) => {
