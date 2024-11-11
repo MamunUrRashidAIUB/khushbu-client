@@ -16,7 +16,7 @@ const Card = ({ name, image, title, brand, price, id }) => {
         name,
         price,
       };
-      axios.post("http://localhost:5000/carts", cartitem).then((res) => {
+      axios.post("http://localhost:3000/carts", cartitem).then((res) => {
         console.log(res.data);
       });
     } else {
