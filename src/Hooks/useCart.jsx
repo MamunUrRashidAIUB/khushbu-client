@@ -11,8 +11,11 @@ const useCart = () => {
       return response.data;
     },
   });
-
-  return [cart];
+  const totalItemCount = cart.reduce(
+    (count, cartItem) => count + cartItem.items.length,
+    0
+  );
+  return [cart, totalItemCount];
 };
 
 export default useCart;
