@@ -6,7 +6,7 @@ import useCart from "../../../../Hooks/useCart";
 
 const Navbar = () => {
   const { user, logout } = useContext(Authcontext);
-  const { cart, totalItemCount, isLoading } = useCart(user?.email); // Fetch cart using user email
+  const { cart, totalItemCount } = useCart(user?.email); // Fetch cart using user email
 
   const handlelogout = () => {
     logout()
@@ -29,11 +29,7 @@ const Navbar = () => {
         <Link to="/cart">
           <button>
             Cart
-            {isLoading ? (
-              <span>Loading...</span>
-            ) : (
-              <div className="badge badge-secondary">{totalItemCount}</div>
-            )}
+            <div className="badge badge-secondary">{totalItemCount}</div>
           </button>
         </Link>
       </li>
