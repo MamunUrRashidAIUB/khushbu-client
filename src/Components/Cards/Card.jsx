@@ -2,12 +2,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useCart from "../../Hooks/useCart";
 
 const Card = ({ name, image, title, brand, price, id }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const axiossecure = useAxiosSecure();
+  const { refetch } = useCart(user?.email); // Pass the userId (email) here
 
   const handleAddToCart = (product) => {
     if (user && user.email) {
@@ -36,6 +38,7 @@ const Card = ({ name, image, title, brand, price, id }) => {
               confirmButtonColor: "#30d630",
               confirmButtonText: "Ok",
             });
+          refetch();
         })
         .catch((error) => {
           console.error("Error adding to cart:", error);
