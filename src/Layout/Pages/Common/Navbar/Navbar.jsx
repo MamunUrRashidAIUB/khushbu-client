@@ -6,7 +6,7 @@ import useCart from "../../../../Hooks/useCart";
 
 const Navbar = () => {
   const { user, logout } = useContext(Authcontext);
-  const [cart, totalItemCount] = useCart();
+  const { cart, totalItemCount, isLoading } = useCart(user?.email); // Fetch cart using user email
 
   const handlelogout = () => {
     logout()
@@ -15,6 +15,7 @@ const Navbar = () => {
         console.log(err);
       });
   };
+
   const navOptions = (
     <ul className="flex gap-6">
       <li className="hover:text-yellow-100 transition-colors duration-200">
@@ -24,33 +25,33 @@ const Navbar = () => {
         <Link to="/brands">Brands</Link>
       </li>
       <li className="hover:text-yellow-100 transition-colors duration-200">
-        <Link to="/secret">secret</Link>
+        <Link to="/secret">Secret</Link>
       </li>
 
       <li className=" bg-yellow-400 text-black px-2 rounded-md  transition-colors duration-200">
         <Link to="/cart">
           <button>
             Cart
-            <div className="badge badge-secondary">{totalItemCount}</div>
+            {isLoading ? (
+              <span>Loading...</span>
+            ) : (
+              <div className="badge badge-secondary">{totalItemCount}</div>
+            )}
           </button>
         </Link>
       </li>
 
       {user ? (
-        <>
-          <li
-            onClick={handlelogout}
-            className="hover:text-yellow-100 transition-colors duration-200"
-          >
-            Logout
-          </li>
-        </>
+        <li
+          onClick={handlelogout}
+          className="hover:text-yellow-100 transition-colors duration-200"
+        >
+          Logout
+        </li>
       ) : (
-        <>
-          <li className="hover:text-yellow-100 transition-colors duration-200">
-            <Link to="/login">Login</Link>
-          </li>
-        </>
+        <li className="hover:text-yellow-100 transition-colors duration-200">
+          <Link to="/login">Login</Link>
+        </li>
       )}
     </ul>
   );

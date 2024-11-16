@@ -1,21 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import { axiossecure } from "./useAxiosSecure";
 
-const useCart = () => {
-  // tan stack query
-
-  const { data: cart = [] } = useQuery({
-    queryKey: "cart",
+const useCart = (userId) => {
+  // Fetch the cart data for the specific user
+  const { data: cart = [], isLoading } = useQuery({
+    queryKey: ["cart", userId],  // query key (should include userId for cache)
     queryFn: async () => {
-      const response = await axiossecure.get("/carts");
+      if (!userId) return []; // Return empty cart if no userId
+      const response = await axiossecure.get(`/carts/${userId}`);
       return response.data;
     },
+    enabled: !!userId,  // Only run the query if a userId is available
   });
-  const totalItemCount = cart.reduce(
-    (count, cartItem) => count + cartItem.items.length,
-    0
-  );
-  return [cart, totalItemCount];
+
+  // Calculate total item count from the 'items' array in the cart
+  const totalItemCount = cart?.items?.length || 0;
+
+  return { cart, totalItemCount, isLoading };
 };
 
 export default useCart;
