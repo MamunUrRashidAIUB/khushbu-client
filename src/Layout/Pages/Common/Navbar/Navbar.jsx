@@ -24,9 +24,6 @@ const Navbar = () => {
       <li className="hover:text-yellow-100 transition-colors duration-200">
         <Link to="/brands">Brands</Link>
       </li>
-      <li className="hover:text-yellow-100 transition-colors duration-200">
-        <Link to="/secret">Secret</Link>
-      </li>
 
       <li className=" bg-yellow-400 text-black px-2 rounded-md  transition-colors duration-200">
         <Link to="/cart">

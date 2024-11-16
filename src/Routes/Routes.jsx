@@ -5,8 +5,6 @@ import Brands from "../Layout/Pages/Brands/Brands";
 import Cart from "../Layout/Pages/Cart/Cart";
 import Login from "../Layout/Pages/Login/Login";
 import Signup from "../Layout/Pages/Login/Signup";
-import Secret from "../Layout/Pages/Secret/Secret";
-import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -18,14 +16,6 @@ export const router = createBrowserRouter([
       { path: "cart", element: <Cart></Cart> },
       { path: "login", element: <Login></Login> },
       { path: "signup", element: <Signup></Signup> },
-      {
-        path: "secret",
-        element: (
-          <PrivateRoute>
-            <Secret></Secret>
-          </PrivateRoute>
-        ),
-      },
     ],
   },
 ]);
