@@ -2,14 +2,16 @@ import { useForm } from "react-hook-form";
 import { Authcontext } from "../../../providers/AuthProviders";
 import { useContext } from "react";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+
 const Signup = () => {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm();
   const { createUser } = useContext(Authcontext);
+  const navigate = useNavigate(); // Initialize navigate
 
   const onSubmit = (data) => {
     console.log(data);
@@ -22,6 +24,8 @@ const Signup = () => {
         title: "Account Created Successfully",
         showConfirmButton: false,
         timer: 1500,
+      }).then(() => {
+        navigate("/login"); // Redirect to login page after signup
       });
     });
   };
