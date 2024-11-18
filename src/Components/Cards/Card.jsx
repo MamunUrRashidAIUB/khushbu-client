@@ -9,20 +9,14 @@ const Card = ({ name, image, title, brand, price, id }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const axiossecure = useAxiosSecure();
-  const { refetch } = useCart(user?.email); // Pass the userId (email) here
+  const { refetch } = useCart(user?.email);
 
   const handleAddToCart = (product) => {
     if (user && user.email) {
       const cartItem = {
-        userId: user.email, // Set userId as the user's email or unique identifier
-        items: [
-          {
-            menuId: product.id,
-            name: product.name,
-            price: product.price,
-          },
-        ],
-        totalAmount: product.price, // For simplicity, using the price of one item. You can update it to sum the cart's total value.
+        menuId: product.id,
+        name: product.name,
+        price: product.price,
       };
 
       axiossecure
