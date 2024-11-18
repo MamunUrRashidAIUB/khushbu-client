@@ -17,6 +17,9 @@ const Card = ({ name, image, title, brand, price, id }) => {
         menuId: product.id,
         name: product.name,
         price: product.price,
+        image: product.image,
+        title: product.title,
+        brand: product.brand,
       };
 
       axiossecure
