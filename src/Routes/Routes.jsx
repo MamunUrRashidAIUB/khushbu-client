@@ -6,7 +6,8 @@ import Brands from "../Layout/Pages/Brands/Brands";
 import Login from "../Layout/Pages/Login/Login";
 import Signup from "../Layout/Pages/Login/Signup";
 import Dashbord from "../Layout/Dashbord";
-import Card from "../Components/Cards/Card";
+
+import Cart from "../Layout/Pages/Cart/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "cart",
-        element: <Card></Card>,
+        element: <Cart></Cart>,
       },
     ],
   },
