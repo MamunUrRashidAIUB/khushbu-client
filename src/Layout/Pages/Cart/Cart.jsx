@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import useCart from "../../../Hooks/useCart";
+
 const Cart = () => {
-  const {cart}=useCart()
   return (
     <div className="text-center">
       <h1>Cart</h1>
