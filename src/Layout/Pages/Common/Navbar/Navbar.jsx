@@ -26,7 +26,7 @@ const Navbar = () => {
       </li>
 
       <li className=" bg-yellow-400 text-black px-2 rounded-md  transition-colors duration-200">
-        <Link to="/cart">
+        <Link to="dashboard/cart">
           <button>
             Cart
             <div className="badge badge-secondary">{totalItemCount}</div>
