@@ -4,28 +4,29 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useCart from "../../Hooks/useCart";
 
-const Card = ({ name, image, title, brand, price, id }) => {
+const Card = ({ name, image, title, brand, price, _id }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const axiossecure = useAxiosSecure();
-  const { refetch } = useCart(user?.email);
+  const [, refetch] = useCart(user?.email);
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = () => {
     if (user && user.email) {
       const cartItem = {
-        menuId: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        title: product.title,
-        brand: product.brand,
+        menuId: _id,
+        email: user.email,
+        name,
+        image,
+        title,
+        brand,
+        price,
       };
 
       axiossecure
         .post("/carts", cartItem)
         .then((res) => {
-          console.log(res.data);
+          console.log(res.data.insertedId);
           if (res.data)
             Swal.fire({
               title: "Added to cart",
@@ -75,7 +76,7 @@ const Card = ({ name, image, title, brand, price, id }) => {
         <div className="card-actions mt-auto">
           <button
             onClick={() =>
-              handleAddToCart({ name, image, title, brand, price, id })
+              handleAddToCart({ name, image, title, brand, price, _id })
             }
             className="bg-orange-400 p-2 text-black rounded-full"
           >
