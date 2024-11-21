@@ -1,11 +1,40 @@
 import { Link } from "react-router-dom";
 import useCart from "../../../Hooks/useCart";
+import { useState } from "react";
 
 const Cart = () => {
-  const [cart] = useCart();
+  const [cart, setCart] = useCart(); // Now you're receiving both cart state and setCart function.
+
+  // Add local state for quantity management
+  const [quantities, setQuantities] = useState(
+    cart.reduce((acc, item) => ({ ...acc, [item._id]: item.quantity || 1 }), {})
+  );
+
+  // Calculate total amount
+  const totalAmount = cart.reduce(
+    (sum, item) => sum + item.price * (quantities[item._id] || 1),
+    0
+  );
+
+  // Handlers for incrementing and decrementing quantities
+  const handleIncrement = (id) => {
+    setQuantities((prev) => ({ ...prev, [id]: (prev[id] || 1) + 1 }));
+  };
+
+  const handleDecrement = (id) => {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: Math.max((prev[id] || 1) - 1, 1), // Prevent quantity < 1
+    }));
+  };
+
+  // delete item from cart
+  const handleDelete = (id) => {
+    setCart((prev) => prev.filter((item) => item._id !== id));
+  };
 
   return (
-    <div className="text-center ">
+    <div className="text-center">
       {cart.length === 0 ? (
         <p>There is no product in the cart.</p>
       ) : (
@@ -20,6 +49,8 @@ const Cart = () => {
                   <th className="px-4 py-2">Image</th>
                   <th className="px-4 py-2">Name</th>
                   <th className="px-4 py-2">Price</th>
+                  <th className="px-4 py-2">Quantity</th>
+                  <th className="px-4 py-2">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -41,6 +72,31 @@ const Cart = () => {
                     </td>
                     <td className="px-4 py-2">{item.name}</td>
                     <td className="px-4 py-2">${item.price}</td>
+                    <td className="px-4 py-2">
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => handleDecrement(item._id)}
+                          className="bg-red-600 text-black px-2 rounded"
+                        >
+                          -
+                        </button>
+                        {quantities[item._id] || 1}
+                        <button
+                          onClick={() => handleIncrement(item._id)}
+                          className="bg-green-500 text-black px-2 rounded"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
+                    <td className="px-4 py-2">
+                      <button
+                        onClick={() => handleDelete(item._id)}
+                        className="bg-red-500 text-white px-3 py-1 rounded"
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -48,7 +104,12 @@ const Cart = () => {
           </div>
         </>
       )}
-
+      <div>
+        <div className="flex justify-center mt-5">
+          <h2 className="text-xl font-bold">Total Amount: </h2>
+          <p className="text-xl font-bold"> $ {totalAmount.toFixed(2)}</p>
+        </div>
+      </div>
       {/* Return to Shop Button */}
       <Link to="/">
         <button className="bg-yellow-200 text-black p-2 rounded-lg mt-5">
