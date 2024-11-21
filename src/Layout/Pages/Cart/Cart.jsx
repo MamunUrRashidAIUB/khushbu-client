@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import useCart from "../../../Hooks/useCart";
 import { useState } from "react";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const Cart = () => {
   const [cart, setCart] = useCart(); // Now you're receiving both cart state and setCart function.
+  const axiossecure = useAxiosSecure();
 
   // Add local state for quantity management
   const [quantities, setQuantities] = useState(
@@ -30,7 +33,27 @@ const Cart = () => {
 
   // delete item from cart
   const handleDelete = (id) => {
-    setCart((prev) => prev.filter((item) => item._id !== id));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiossecure.delete(`/carts/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
   };
 
   return (
