@@ -60,7 +60,9 @@ const Cart = () => {
   return (
     <div className="text-center">
       {cart.length === 0 ? (
-        <p>There is no product in the cart.</p>
+        <>
+          <p>There is no product in the cart.</p>
+        </>
       ) : (
         <>
           <h1 className="text-2xl font-bold mb-5">Your Cart</h1>
@@ -137,6 +139,7 @@ const Cart = () => {
           Place Order{" "}
         </button>
       </div>
+
       {/* Return to Shop Button */}
       <Link to="/">
         <button className="bg-yellow-200 text-black p-2 rounded-lg mt-5">
