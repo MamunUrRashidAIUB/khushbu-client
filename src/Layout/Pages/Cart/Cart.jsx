@@ -130,15 +130,17 @@ const Cart = () => {
           </div>
         </>
       )}
-      <div>
-        <div className="flex justify-center mt-5">
-          <h2 className="text-xl font-bold">Total Amount: </h2>
-          <p className="text-xl font-bold"> $ {totalAmount.toFixed(2)}</p>
+      {cart.length > 0 && (
+        <div>
+          <div className="flex justify-center mt-5">
+            <h2 className="text-xl font-bold">Total Amount: </h2>
+            <p className="text-xl font-bold"> $ {totalAmount.toFixed(2)}</p>
+          </div>
+          <button className=" text-black p-2 rounded-lg mt-5 bg-green-400">
+            Place Order
+          </button>
         </div>
-        <button className=" text-black p-2 rounded-lg mt-5 bg-green-400">
-          Place Order{" "}
-        </button>
-      </div>
+      )}
 
       {/* Return to Shop Button */}
       <Link to="/">
