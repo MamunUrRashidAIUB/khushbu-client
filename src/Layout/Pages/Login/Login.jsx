@@ -3,10 +3,19 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from "../../../providers/AuthProviders";
 import Swal from "sweetalert2";
 import { FaGoogle } from "react-icons/fa";
+import useAuth from "../../../Hooks/useAuth";
 const Login = () => {
   const { signin } = useContext(Authcontext);
+  const { signInWithGoogle } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const handlegooglelogin = () => {
+    signInWithGoogle().then((result) => {
+      const user = result.user;
+      console.log(user);
+    });
+  };
 
   const from = location.state?.from?.pathname || "/";
 
@@ -83,10 +92,13 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn bg-orange-950">Login</button>
-              <button className="btn btn-outline mt-2">
-                <FaGoogle></FaGoogle>
-              </button>
             </div>
+            <button
+              onClick={handlegooglelogin}
+              className="btn btn-outline mt-2"
+            >
+              <FaGoogle>Google</FaGoogle>
+            </button>
           </form>
         </div>
       </div>
