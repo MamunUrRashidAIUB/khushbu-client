@@ -1,4 +1,4 @@
-import { FaShoppingCart } from "react-icons/fa";
+import { FaBlackberry, FaHome, FaShoppingCart } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashbord = () => {
@@ -20,7 +20,7 @@ const Dashbord = () => {
               to="/dashboard/cart"
               className="flex items-center gap-2 p-2 text-black hover:text-white transition-colors"
             >
-              <FaShoppingCart className="text-lg" />
+              <FaHome />
               <span>My Cart</span>
             </NavLink>
           </li>
@@ -29,7 +29,7 @@ const Dashbord = () => {
               to="/dashboard/cart"
               className="flex items-center gap-2 p-2 text-black hover:text-white transition-colors"
             >
-              <FaShoppingCart className="text-lg" />
+              <FaBlackberry />
               <span>My Cart</span>
             </NavLink>
           </li>
