@@ -14,7 +14,6 @@ const Signup = () => {
   const navigate = useNavigate(); // Initialize navigate
 
   const onSubmit = (data) => {
-    console.log(data);
     createUser(data.email, data.password).then((result) => {
       const user = result.user;
       console.log(user);
@@ -25,6 +24,8 @@ const Signup = () => {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
+
+        
         navigate("/login"); // Redirect to login page after signup
       });
     });
