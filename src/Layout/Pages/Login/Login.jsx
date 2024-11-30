@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Authcontext } from "../../../providers/AuthProviders";
 import Swal from "sweetalert2";
+import { FaGoogle } from "react-icons/fa";
 const Login = () => {
   const { signin } = useContext(Authcontext);
   const navigate = useNavigate();
@@ -82,6 +83,9 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn bg-orange-950">Login</button>
+              <button className="btn btn-outline mt-2">
+                <FaGoogle></FaGoogle>
+              </button>
             </div>
           </form>
         </div>
