@@ -21,7 +21,7 @@ const Dashbord = () => {
               className="flex items-center gap-2 p-2 text-black hover:text-white transition-colors"
             >
               <FaHome />
-              <span>My Cart</span>
+              <span>Home</span>
             </NavLink>
           </li>
           <li>
@@ -30,7 +30,7 @@ const Dashbord = () => {
               className="flex items-center gap-2 p-2 text-black hover:text-white transition-colors"
             >
               <FaBlackberry />
-              <span>My Cart</span>
+              <span>Add Items</span>
             </NavLink>
           </li>
         </ul>
