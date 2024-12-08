@@ -9,6 +9,7 @@ import Dashbord from "../Layout/Dashbord";
 
 import Cart from "../Layout/Pages/Cart/Cart";
 import AdminOrders from "../Layout/Pages/Admin/Order";
+import AdminLogin from "../Layout/Pages/Admin/AdminLogin";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
       { path: "brands", element: <Brands></Brands> },
       { path: "login", element: <Login></Login> },
       { path: "signup", element: <Signup></Signup> },
+      { path: "admin/login", element: <AdminLogin></AdminLogin> },
       { path: "admin/orders", element: <AdminOrders></AdminOrders> },
     ],
   },

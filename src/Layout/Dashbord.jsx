@@ -16,6 +16,9 @@ const Dashbord = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/admin/orders">View Admin Orders</NavLink>
+          </li>
+          <li>
             <NavLink
               to="/dashboard/cart"
               className="flex items-center gap-2 p-2 text-black hover:text-white transition-colors"
