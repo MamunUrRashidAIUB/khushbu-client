@@ -31,6 +31,41 @@ const Cart = () => {
     }));
   };
 
+  //handle placing order
+  const handlePlaceOrder = () => {
+    const order = {
+      email: user.email, // Assuming you have user information
+      items: cart.map((item) => ({
+        id: item._id,
+        name: item.name,
+        quantity: quantities[item._id] || 1,
+        price: item.price,
+      })),
+      totalAmount: totalAmount,
+    };
+
+    axiossecure
+      .post("/orders", order) // Replace '/orders' with your actual endpoint
+      .then((response) => {
+        if (response.data.success) {
+          Swal.fire({
+            title: "Order Placed!",
+            text: "Your order has been successfully placed.",
+            icon: "success",
+          });
+          refetch(); // Optionally refetch cart or perform other actions
+        }
+      })
+      .catch((error) => {
+        console.error("Error placing order:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "There was an issue placing your order.",
+          icon: "error",
+        });
+      });
+  };
+
   // delete item from cart
   const handleDelete = (id) => {
     Swal.fire({
@@ -136,7 +171,10 @@ const Cart = () => {
             <h2 className="text-xl font-bold">Total Amount: </h2>
             <p className="text-xl font-bold"> $ {totalAmount.toFixed(2)}</p>
           </div>
-          <button className=" text-black p-2 rounded-lg mt-5 bg-green-400">
+          <button
+            onClick={handlePlaceOrder}
+            className="text-black p-2 rounded-lg mt-5 bg-green-400"
+          >
             Place Order
           </button>
         </div>
@@ -144,7 +182,7 @@ const Cart = () => {
 
       {/* Return to Shop Button */}
       <Link to="/">
-        <button className="bg-yellow-200 text-black p-2 rounded-lg mt-5">
+        <button className="bg-yellow-200 text-black p-2  rounded-lg mt-5">
           Return to shop
         </button>
       </Link>
