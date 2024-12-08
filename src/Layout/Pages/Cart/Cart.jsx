@@ -3,8 +3,10 @@ import useCart from "../../../Hooks/useCart";
 import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
 
 const Cart = () => {
+  const { user } = useAuth();
   const [cart, refetch] = useCart(); // Now you're receiving both cart state and setCart function.
   const axiossecure = useAxiosSecure();
 
@@ -33,6 +35,15 @@ const Cart = () => {
 
   //handle placing order
   const handlePlaceOrder = () => {
+    if (!user) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please login to place order.",
+        icon: "error",
+      });
+      return;
+    }
+
     const order = {
       email: user.email, // Assuming you have user information
       items: cart.map((item) => ({
