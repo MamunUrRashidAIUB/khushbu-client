@@ -34,9 +34,6 @@ const Navbar = () => {
           </button>
         </Link>
       </li>
-      <li>
-        <Link to="/admin/login">Admin Login</Link> {/* Link to Admin Login */}
-      </li>
 
       {user ? (
         <li

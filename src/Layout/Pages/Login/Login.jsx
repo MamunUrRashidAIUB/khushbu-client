@@ -37,7 +37,13 @@ const Login = () => {
           timer: 1500,
         });
 
-        navigate(from, { replace: true });
+        // Check if the user is the admin
+        if (user.email === "mr9374247@gmail.com") {
+          // Replace with your admin email
+          navigate("/admin/orders"); // Redirect to admin orders page
+        } else {
+          navigate(from, { replace: true }); // Redirect to user dashboard or home
+        }
       })
       .catch((error) => {
         console.error("Login failed:", error.message); // Display specific error message

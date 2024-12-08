@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return <span className="loading loading-dots loading-lg"></span>;
   }
-  if (user && user.email === "admin@example.com") {
+  if (user && user.email === "mr9374247@gmail.com") {
     // Check if the user is an admin
     return children;
   }
