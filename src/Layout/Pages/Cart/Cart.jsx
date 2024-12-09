@@ -224,11 +224,6 @@ const Cart = () => {
         </div>
       )}
 
-      <Link to="/">
-        <button className="bg-yellow-200 text-black p-2 rounded-lg mt-5">
-          Return to Shop
-        </button>
-      </Link>
     </div>
   );
 };
