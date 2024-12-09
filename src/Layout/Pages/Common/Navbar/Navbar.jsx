@@ -36,12 +36,19 @@ const Navbar = () => {
       </li>
 
       {user ? (
-        <li
-          onClick={handlelogout}
-          className="hover:text-yellow-100 transition-colors duration-200"
-        >
-          Logout
-        </li>
+        <>
+          {user.email === "mr9374247@gmail.com" && ( // Replace with your admin email
+            <li className="hover:text-yellow-100 transition-colors duration-200">
+              <Link to="/admin/orders">Admin Orders</Link>
+            </li>
+          )}
+          <li
+            onClick={handlelogout}
+            className="hover:text-yellow-100 transition-colors duration-200"
+          >
+            Logout
+          </li>
+        </>
       ) : (
         <li className="hover:text-yellow-100 transition-colors duration-200">
           <Link to="/login">Login</Link>
