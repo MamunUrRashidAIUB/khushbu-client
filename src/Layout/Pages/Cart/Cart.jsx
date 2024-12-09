@@ -7,21 +7,19 @@ import useAuth from "../../../Hooks/useAuth";
 
 const Cart = () => {
   const { user } = useAuth();
-  const [cart, refetch] = useCart(); // Now you're receiving both cart state and setCart function.
+  const [cart, refetch] = useCart();
   const axiossecure = useAxiosSecure();
-
-  // Add local state for quantity management
+  const [showAddressForm, setShowAddressForm] = useState(false);
+  const [address, setAddress] = useState("");
   const [quantities, setQuantities] = useState(
     cart.reduce((acc, item) => ({ ...acc, [item._id]: item.quantity || 1 }), {})
   );
 
-  // Calculate total amount
   const totalAmount = cart.reduce(
     (sum, item) => sum + item.price * (quantities[item._id] || 1),
     0
   );
 
-  // Handlers for incrementing and decrementing quantities
   const handleIncrement = (id) => {
     setQuantities((prev) => ({ ...prev, [id]: (prev[id] || 1) + 1 }));
   };
@@ -29,23 +27,22 @@ const Cart = () => {
   const handleDecrement = (id) => {
     setQuantities((prev) => ({
       ...prev,
-      [id]: Math.max((prev[id] || 1) - 1, 1), // Prevent quantity < 1
+      [id]: Math.max((prev[id] || 1) - 1, 1),
     }));
   };
 
-  //handle placing order
-  const handlePlaceOrder = () => {
-    if (!user) {
+  const handleAddressSubmit = () => {
+    if (!address.trim()) {
       Swal.fire({
         title: "Error!",
-        text: "Please login to place order.",
+        text: "Please provide a valid address.",
         icon: "error",
       });
       return;
     }
 
     const order = {
-      email: user.email, // Assuming you have user information
+      email: user.email,
       items: cart.map((item) => ({
         id: item._id,
         name: item.name,
@@ -53,10 +50,11 @@ const Cart = () => {
         price: item.price,
       })),
       totalAmount: totalAmount,
+      address: address.trim(),
     };
 
     axiossecure
-      .post("/orders", order) // Replace '/orders' with your actual endpoint
+      .post("/orders", order)
       .then((response) => {
         if (response.data.success) {
           Swal.fire({
@@ -64,7 +62,9 @@ const Cart = () => {
             text: "Your order has been successfully placed.",
             icon: "success",
           });
-          refetch(); // Optionally refetch cart or perform other actions
+          refetch();
+          setShowAddressForm(false);
+          setAddress("");
         }
       })
       .catch((error) => {
@@ -77,11 +77,22 @@ const Cart = () => {
       });
   };
 
-  // delete item from cart
+  const handlePlaceOrder = () => {
+    if (!user) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please log in to place your order.",
+        icon: "error",
+      });
+      return;
+    }
+    setShowAddressForm(true);
+  };
+
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "This item will be removed from your cart.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -94,8 +105,14 @@ const Cart = () => {
             refetch();
             Swal.fire({
               title: "Deleted!",
-              text: "Your file has been deleted.",
+              text: "Item has been removed from your cart.",
               icon: "success",
+            });
+          } else {
+            Swal.fire({
+              title: "Error!",
+              text: "Could not remove the item.",
+              icon: "error",
             });
           }
         });
@@ -106,16 +123,13 @@ const Cart = () => {
   return (
     <div className="text-center">
       {cart.length === 0 ? (
-        <>
-          <p>There is no product in the cart.</p>
-        </>
+        <p>There are no products in the cart.</p>
       ) : (
         <>
           <h1 className="text-2xl font-bold mb-5">Your Cart</h1>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-auto">
             <table className="table-auto w-full text-left">
-              {/* Table Head */}
               <thead>
                 <tr>
                   <th className="px-4 py-2">Image</th>
@@ -126,7 +140,6 @@ const Cart = () => {
                 </tr>
               </thead>
               <tbody>
-                {/* Table Rows */}
                 {cart.map((item) => (
                   <tr key={item._id} className="border-t">
                     <td className="px-4 py-2">
@@ -143,12 +156,13 @@ const Cart = () => {
                       </div>
                     </td>
                     <td className="px-4 py-2">{item.name}</td>
-                    <td className="px-4 py-2">${item.price}</td>
+                    <td className="px-4 py-2">${item.price.toFixed(2)}</td>
                     <td className="px-4 py-2">
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleDecrement(item._id)}
                           className="bg-red-600 text-black px-2 rounded"
+                          aria-label="Decrease quantity"
                         >
                           -
                         </button>
@@ -156,6 +170,7 @@ const Cart = () => {
                         <button
                           onClick={() => handleIncrement(item._id)}
                           className="bg-green-500 text-black px-2 rounded"
+                          aria-label="Increase quantity"
                         >
                           +
                         </button>
@@ -165,6 +180,7 @@ const Cart = () => {
                       <button
                         onClick={() => handleDelete(item._id)}
                         className="bg-red-500 text-white px-3 py-1 rounded"
+                        aria-label="Delete item"
                       >
                         Delete
                       </button>
@@ -174,10 +190,7 @@ const Cart = () => {
               </tbody>
             </table>
           </div>
-        </>
-      )}
-      {cart.length > 0 && (
-        <div>
+
           <div className="flex justify-center mt-5">
             <h2 className="text-xl font-bold">Total Amount: </h2>
             <p className="text-xl font-bold"> $ {totalAmount.toFixed(2)}</p>
@@ -188,13 +201,32 @@ const Cart = () => {
           >
             Place Order
           </button>
+        </>
+      )}
+
+      {showAddressForm && (
+        <div className="address-form mt-5">
+          <h2 className="text-xl font-bold mb-2">Enter Your Address</h2>
+          <input
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Enter your address"
+            className="input input-bordered w-1/2 mb-3"
+            required
+          />
+          <button
+            onClick={handleAddressSubmit}
+            className="btn bg-green-400 text-black"
+          >
+            Submit Address
+          </button>
         </div>
       )}
 
-      {/* Return to Shop Button */}
       <Link to="/">
-        <button className="bg-yellow-200 text-black p-2  rounded-lg mt-5">
-          Return to shop
+        <button className="bg-yellow-200 text-black p-2 rounded-lg mt-5">
+          Return to Shop
         </button>
       </Link>
     </div>

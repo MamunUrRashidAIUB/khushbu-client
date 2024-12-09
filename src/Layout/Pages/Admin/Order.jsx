@@ -40,6 +40,7 @@ const AdminOrders = () => {
               <th className="border border-gray-300 p-2">Items</th>
               <th className="border border-gray-300 p-2">Total Amount</th>
               <th className="border border-gray-300 p-2">Status</th>
+              <th className="border border-gray-300 p-2">Address</th>
             </tr>
           </thead>
           <tbody>
@@ -59,6 +60,7 @@ const AdminOrders = () => {
                 </td>
                 <td className="border border-gray-300 p-2">Pending</td>{" "}
                 {/* You can add more status handling */}
+                <td className="border border-gray-300 p-2">{order.address}</td>
               </tr>
             ))}
           </tbody>
