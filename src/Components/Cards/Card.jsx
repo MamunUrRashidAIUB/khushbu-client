@@ -78,7 +78,7 @@ const Card = ({ name, image, title, brand, price, _id }) => {
             onClick={() =>
               handleAddToCart({ name, image, title, brand, price, _id })
             }
-            className="bg-orange-400 p-2 text-black rounded-full"
+            className="bg-orange-400 p-2 text-black rounded-full transition-all duration-700 bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400"
           >
             Add to cart
           </button>
