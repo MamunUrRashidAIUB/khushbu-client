@@ -63,7 +63,7 @@ const Login = () => {
         </div>
         <div className="card w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleLogin} className="card-body">
-            <div className="form-control">
+            {/* <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
@@ -98,7 +98,7 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn bg-orange-950">Login</button>
-            </div>
+            </div> */}
             <button
               onClick={handlegooglelogin}
               className="btn btn-outline mt-2"
