@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import useCart from "../../../Hooks/useCart";
 import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
@@ -223,7 +222,6 @@ const Cart = () => {
           </button>
         </div>
       )}
-
     </div>
   );
 };
