@@ -59,7 +59,7 @@ const Navbar = () => {
 
   return (
     <div className="p-2 ">
-      <div className="flex items-center justify-between ">
+      <div className="flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img src={img} alt="logo" className="w-24" />
         </Link>
