@@ -26,8 +26,7 @@ const Card = ({ name, image, title, brand, price, _id }) => {
       axiossecure
         .post("/carts", cartItem)
         .then((res) => {
-          console.log(res.data.insertedId);
-          if (res.data)
+          if (res.data) {
             Swal.fire({
               title: "Added to cart",
               text: "Product added to cart successfully",
@@ -36,7 +35,8 @@ const Card = ({ name, image, title, brand, price, _id }) => {
               confirmButtonColor: "#30d630",
               confirmButtonText: "Ok",
             });
-          refetch();
+            refetch();
+          }
         })
         .catch((error) => {
           console.error("Error adding to cart:", error);
@@ -59,26 +59,26 @@ const Card = ({ name, image, title, brand, price, _id }) => {
   };
 
   return (
-    <div className="bg-amber-950 w-60 shadow-xl rounded-lg overflow-hidden flex flex-col">
-      <figure className="mx-auto pt-10">
-        <img src={image} alt={name} className="rounded-xl" />
+    <div className="bg-amber-950 w-full md:w-72 lg:w-80 shadow-xl rounded-lg overflow-hidden flex flex-col">
+      <figure className="mx-auto pt-5">
+        <img
+          src={image}
+          alt={name}
+          className="rounded-xl w-full h-40 object-cover lg:h-48"
+        />
       </figure>
       <div className="card-body flex flex-col items-center text-center p-4 flex-grow">
-        <h2 className="card-title text-lg font-semibold overflow-hidden">
-          {name}
-        </h2>
-        <p className="text-sm overflow-hidden">{title}</p>
-        <p className="text-sm overflow-hidden">{brand}</p>
-        <p className="text-sm overflow-hidden">
+        <h2 className="text-lg font-semibold overflow-hidden">{name}</h2>
+        <p className="text-sm text-gray-300">{title}</p>
+        <p className="text-sm text-gray-300">{brand}</p>
+        <p className="text-sm font-medium text-yellow-400">
           <span>Price: $</span>
           {price}
         </p>
         <div className="card-actions mt-auto">
           <button
-            onClick={() =>
-              handleAddToCart({ name, image, title, brand, price, _id })
-            }
-            className="bg-orange-400 p-2 text-black rounded-full transition-all duration-700 bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400"
+            onClick={handleAddToCart}
+            className="p-2 px-4 text-white font-medium rounded-full transition-all duration-500 bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400"
           >
             Add to cart
           </button>
