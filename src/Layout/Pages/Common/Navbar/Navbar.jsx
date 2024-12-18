@@ -3,7 +3,7 @@ import img from "../Navbar/logo.png";
 import { useContext, useState } from "react";
 import { Authcontext } from "../../../../providers/AuthProviders";
 import useCart from "../../../../Hooks/useCart";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaBars, FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logout } = useContext(Authcontext);
@@ -67,20 +67,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center">{navOptions}</div>
         <div className="md:hidden">
           <button className="text-black" onClick={() => setMenuOpen(!menuOpen)}>
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              ></path>
-            </svg>
+            <FaBars />
           </button>
         </div>
       </div>
