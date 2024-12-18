@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import img from "../Navbar/logo.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Authcontext } from "../../../../providers/AuthProviders";
 import useCart from "../../../../Hooks/useCart";
 import { FaShoppingCart } from "react-icons/fa";
@@ -8,6 +8,7 @@ import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
   const { user, logout } = useContext(Authcontext);
   const [cart] = useCart();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handlelogout = () => {
     logout()
@@ -18,7 +19,7 @@ const Navbar = () => {
   };
 
   const navOptions = (
-    <ul className="flex gap-6">
+    <ul className="flex flex-col md:flex-row gap-6 md:gap-8">
       <li className="hover:text-yellow-100 transition-colors duration-200">
         <Link to="/">Home</Link>
       </li>
@@ -26,7 +27,7 @@ const Navbar = () => {
         <Link to="/brands">Brands</Link>
       </li>
 
-      <li className=" bg-yellow-400 text-black px-2 rounded-md   transition-colors duration-200">
+      <li className="bg-yellow-400 text-black px-2 rounded-md transition-colors duration-200">
         <Link to="dashboard/cart">
           <button className="flex gap-1 items-center justify-around">
             <FaShoppingCart />
@@ -37,7 +38,7 @@ const Navbar = () => {
 
       {user ? (
         <>
-          {user.email === "mr9374247@gmail.com" && ( // Replace with your admin email
+          {user.email === "mr9374247@gmail.com" && (
             <li className="hover:text-yellow-100 transition-colors duration-200">
               <Link to="/admin/orders">Admin Orders</Link>
             </li>
@@ -58,12 +59,34 @@ const Navbar = () => {
   );
 
   return (
-    <div className="p-2 ">
+    <div className="p-2">
       <div className="flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img src={img} alt="logo" className="w-24" />
         </Link>
-        <div className="flex items-center">{navOptions}</div>
+        <div className="hidden md:flex items-center">{navOptions}</div>
+        <div className="md:hidden">
+          <button className="text-black" onClick={() => setMenuOpen(!menuOpen)}>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div className={`md:hidden ${menuOpen ? "block" : "hidden"}`}>
+        {/* Mobile menu */}
+        <div className="flex flex-col items-center">{navOptions}</div>
       </div>
     </div>
   );
