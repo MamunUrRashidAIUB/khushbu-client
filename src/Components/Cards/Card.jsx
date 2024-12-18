@@ -59,7 +59,7 @@ const Card = ({ name, image, title, brand, price, _id }) => {
   };
 
   return (
-    <div className="bg-amber-950 w-full md:w-72 lg:w-80 shadow-xl rounded-lg overflow-hidden flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+    <div className="bg-amber-950 w-full md:w-40 lg:w-60 shadow-xl rounded-lg overflow-hidden flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
       <figure className="mx-auto pt-5">
         <img
           src={image}
