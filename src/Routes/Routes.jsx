@@ -22,16 +22,11 @@ export const router = createBrowserRouter([
       { path: "signup", element: <Signup></Signup> },
       { path: "admin/login", element: <AdminLogin></AdminLogin> },
       { path: "admin/orders", element: <AdminOrders></AdminOrders> },
+      { path: "dashboard/cart", element: <Cart></Cart> },
     ],
   },
   {
     path: "dashboard",
     element: <Dashbord></Dashbord>,
-    children: [
-      {
-        path: "cart",
-        element: <Cart></Cart>,
-      },
-    ],
   },
 ]);
