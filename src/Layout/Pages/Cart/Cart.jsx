@@ -120,31 +120,31 @@ const Cart = () => {
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center px-4 sm:px-6 md:px-8">
       {cart.length === 0 ? (
-        <p>There are no products in the cart.</p>
+        <p className="text-lg sm:text-xl">There are no products in the cart.</p>
       ) : (
         <>
-          <h1 className="text-2xl font-bold mb-5">Your Cart</h1>
+          <h1 className="text-xl sm:text-2xl font-bold mb-5">Your Cart</h1>
 
-          <div className="overflow-auto">
+          <div className="overflow-x-auto">
             <table className="table-auto w-full text-left">
               <thead>
                 <tr>
-                  <th className="px-4 py-2">Image</th>
-                  <th className="px-4 py-2">Name</th>
-                  <th className="px-4 py-2">Price</th>
-                  <th className="px-4 py-2">Quantity</th>
-                  <th className="px-4 py-2">Action</th>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2">Image</th>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2">Name</th>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2">Price</th>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2">Quantity</th>
+                  <th className="px-2 py-1 sm:px-4 sm:py-2">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {cart.map((item) => (
                   <tr key={item._id} className="border-t">
-                    <td className="px-4 py-2">
-                      <div className="flex items-center gap-3">
+                    <td className="px-2 py-1 sm:px-4 sm:py-2">
+                      <div className="flex items-center gap-2 sm:gap-3">
                         <div className="avatar">
-                          <div className="mask mask-squircle h-12 w-12">
+                          <div className="mask mask-squircle h-10 w-10 sm:h-12 sm:w-12">
                             <img
                               src={item.image}
                               alt={item.name}
@@ -154,13 +154,15 @@ const Cart = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-2">{item.name}</td>
-                    <td className="px-4 py-2">${item.price.toFixed(2)}</td>
-                    <td className="px-4 py-2">
-                      <div className="flex items-center gap-2">
+                    <td className="px-2 py-1 sm:px-4 sm:py-2">{item.name}</td>
+                    <td className="px-2 py-1 sm:px-4 sm:py-2">
+                      ${item.price.toFixed(2)}
+                    </td>
+                    <td className="px-2 py-1 sm:px-4 sm:py-2">
+                      <div className="flex items-center gap-1 sm:gap-2">
                         <button
                           onClick={() => handleDecrement(item._id)}
-                          className="bg-red-600 text-black px-2 rounded"
+                          className="bg-red-600 text-black px-1 sm:px-2 rounded"
                           aria-label="Decrease quantity"
                         >
                           -
@@ -168,17 +170,17 @@ const Cart = () => {
                         {quantities[item._id] || 1}
                         <button
                           onClick={() => handleIncrement(item._id)}
-                          className="bg-green-500 text-black px-2 rounded"
+                          className="bg-green-500 text-black px-1 sm:px-2 rounded"
                           aria-label="Increase quantity"
                         >
                           +
                         </button>
                       </div>
                     </td>
-                    <td className="px-4 py-2">
+                    <td className="px-2 py-1 sm:px-4 sm:py-2">
                       <button
                         onClick={() => handleDelete(item._id)}
-                        className="bg-red-500 text-white px-3 py-1 rounded"
+                        className="bg-red-500 text-white px-2 sm:px-3 py-1 rounded"
                         aria-label="Delete item"
                       >
                         Delete
@@ -190,9 +192,11 @@ const Cart = () => {
             </table>
           </div>
 
-          <div className="flex justify-center mt-5">
-            <h2 className="text-xl font-bold">Total Amount: </h2>
-            <p className="text-xl font-bold"> $ {totalAmount.toFixed(2)}</p>
+          <div className="flex flex-col sm:flex-row justify-center items-center mt-5 gap-2">
+            <h2 className="text-lg sm:text-xl font-bold">Total Amount:</h2>
+            <p className="text-lg sm:text-xl font-bold">
+              ${totalAmount.toFixed(2)}
+            </p>
           </div>
           <button
             onClick={handlePlaceOrder}
@@ -205,13 +209,15 @@ const Cart = () => {
 
       {showAddressForm && (
         <div className="address-form mt-5">
-          <h2 className="text-xl font-bold mb-2">Enter Your Address</h2>
+          <h2 className="text-lg sm:text-xl font-bold mb-2">
+            Enter Your Address
+          </h2>
           <input
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             placeholder="Enter your address"
-            className="input input-bordered w-1/2 mb-3"
+            className="input input-bordered w-full sm:w-1/2 mb-3"
             required
           />
           <button

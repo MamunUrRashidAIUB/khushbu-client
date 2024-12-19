@@ -8,8 +8,8 @@ const Dashbord = () => {
   const { user } = useContext(Authcontext);
 
   return (
-    <div className="flex bg-[rgba(66,42,43,255)] text-[rgba(253,223,147,255)] max-w-screen-xl mx-auto">
-      <div className="w-64 min-h-screen bg-orange-400 flex justify-center">
+    <div className="flex flex-col md:flex-row bg-[rgba(66,42,43,255)] text-[rgba(253,223,147,255)] max-w-screen-xl mx-auto">
+      <div className="w-full md:w-64 min-h-screen bg-orange-400 flex justify-center md:justify-start">
         <Link to="/">
           <button className="flex mt-4 items-center gap-2 bg-yellow-200 text-black p-3 rounded-lg">
             <FaHome className="text-lg" />
@@ -17,9 +17,8 @@ const Dashbord = () => {
           </button>
         </Link>
       </div>
-      <div className="flex-1">
-        {user && user.email === "mr9374247@gmail.com" && <AdminUpload />}{" "}
-        {/* Render AdminUpload for admin */}
+      <div className="flex-1 p-4">
+        {user && user.email === "mr9374247@gmail.com" && <AdminUpload />}
         <Outlet />
       </div>
     </div>
