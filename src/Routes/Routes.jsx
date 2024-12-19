@@ -10,6 +10,7 @@ import Dashbord from "../Layout/Dashbord";
 import Cart from "../Layout/Pages/Cart/Cart";
 import AdminOrders from "../Layout/Pages/Admin/Order";
 import AdminLogin from "../Layout/Pages/Admin/AdminLogin";
+import AdminUpload from "../Layout/Pages/Admin/AdminUpload";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       { path: "admin/login", element: <AdminLogin></AdminLogin> },
       { path: "admin/orders", element: <AdminOrders></AdminOrders> },
       { path: "dashboard/cart", element: <Cart></Cart> },
+      {
+        path: "admin/upload",
+        element: <AdminUpload />,
+      },
     ],
   },
   {

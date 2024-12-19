@@ -43,6 +43,11 @@ const Navbar = () => {
               <Link to="/admin/orders">Admin Orders</Link>
             </li>
           )}
+          {user && user.email === "mr9374247@gmail.com" && (
+            <li className="hover:text-yellow-100 transition-colors duration-200">
+              <Link to="/admin/upload">Upload Product</Link>
+            </li>
+          )}
           <li
             onClick={handlelogout}
             className="hover:text-yellow-100 transition-colors duration-200"
