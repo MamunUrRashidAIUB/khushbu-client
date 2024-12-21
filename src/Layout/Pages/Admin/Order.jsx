@@ -1,4 +1,3 @@
-// src/Layout/Pages/Admin/Orders.jsx
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure"; // Custom hook for secure axios instance
 
@@ -32,39 +31,48 @@ const AdminOrders = () => {
       {orders.length === 0 ? (
         <p>No orders found.</p>
       ) : (
-        <table className="min-w-full border-collapse border border-gray-300">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 p-2">Order ID</th>
-              <th className="border border-gray-300 p-2">Email</th>
-              <th className="border border-gray-300 p-2">Items</th>
-              <th className="border border-gray-300 p-2">Total Amount</th>
-              <th className="border border-gray-300 p-2">Status</th>
-              <th className="border border-gray-300 p-2">Address</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order.id}>
-                <td className="border border-gray-300 p-2">{order.id}</td>
-                <td className="border border-gray-300 p-2">{order.email}</td>
-                <td className="border border-gray-300 p-2">
-                  {order.items.map((item) => (
-                    <div key={item.id}>
-                      {item.name} (x{item.quantity})
-                    </div>
-                  ))}
-                </td>
-                <td className="border border-gray-300 p-2">
-                  ${order.totalAmount}
-                </td>
-                <td className="border border-gray-300 p-2">Pending</td>{" "}
-                {/* You can add more status handling */}
-                <td className="border border-gray-300 p-2">{order.address}</td>
+        <div className="overflow-x-auto">
+          <table className="min-w-full border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="border border-gray-300 p-2 text-left">
+                  Order ID
+                </th>
+                <th className="border border-gray-300 p-2 text-left">Email</th>
+                <th className="border border-gray-300 p-2 text-left">Items</th>
+                <th className="border border-gray-300 p-2 text-left">
+                  Total Amount
+                </th>
+                <th className="border border-gray-300 p-2 text-left">Status</th>
+                <th className="border border-gray-300 p-2 text-left">
+                  Address
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {orders.map((order) => (
+                <tr key={order.id} className="hover:bg-gray-100">
+                  <td className="border border-gray-300 p-2">{order.id}</td>
+                  <td className="border border-gray-300 p-2">{order.email}</td>
+                  <td className="border border-gray-300 p-2">
+                    {order.items.map((item) => (
+                      <div key={item.id}>
+                        {item.name} (x{item.quantity})
+                      </div>
+                    ))}
+                  </td>
+                  <td className="border border-gray-300 p-2">
+                    ${order.totalAmount}
+                  </td>
+                  <td className="border border-gray-300 p-2">Pending</td>
+                  <td className="border border-gray-300 p-2">
+                    {order.address}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
