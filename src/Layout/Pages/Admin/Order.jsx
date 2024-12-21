@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure"; // Custom hook for secure axios instance
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const AdminOrders = () => {
   const axiossecure = useAxiosSecure();
@@ -9,7 +9,7 @@ const AdminOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axiossecure.get("/orders"); // Replace with your actual endpoint
+        const response = await axiossecure.get("/orders");
         setOrders(response.data);
         setLoading(false);
       } catch (error) {
@@ -34,38 +34,50 @@ const AdminOrders = () => {
         <div className="overflow-x-auto">
           <table className="min-w-full border-collapse border border-gray-300">
             <thead>
-              <tr className="bg-gray-200">
-                <th className="border border-gray-300 p-2 text-left">
+              <tr>
+                <th className="border border-gray-300 p-2 text-sm sm:text-base">
                   Order ID
                 </th>
-                <th className="border border-gray-300 p-2 text-left">Email</th>
-                <th className="border border-gray-300 p-2 text-left">Items</th>
-                <th className="border border-gray-300 p-2 text-left">
+                <th className="border border-gray-300 p-2 text-sm sm:text-base">
+                  Email
+                </th>
+                <th className="border border-gray-300 p-2 text-sm sm:text-base">
+                  Items
+                </th>
+                <th className="border border-gray-300 p-2 text-sm sm:text-base">
                   Total Amount
                 </th>
-                <th className="border border-gray-300 p-2 text-left">Status</th>
-                <th className="border border-gray-300 p-2 text-left">
+                <th className="border border-gray-300 p-2 text-sm sm:text-base">
+                  Status
+                </th>
+                <th className="border border-gray-300 p-2 text-sm sm:text-base">
                   Address
                 </th>
               </tr>
             </thead>
             <tbody>
               {orders.map((order) => (
-                <tr key={order.id} className="hover:bg-gray-100">
-                  <td className="border border-gray-300 p-2">{order.id}</td>
-                  <td className="border border-gray-300 p-2">{order.email}</td>
-                  <td className="border border-gray-300 p-2">
+                <tr key={order.id}>
+                  <td className="border border-gray-300 p-2 text-xs sm:text-sm">
+                    {order.id}
+                  </td>
+                  <td className="border border-gray-300 p-2 text-xs sm:text-sm">
+                    {order.email}
+                  </td>
+                  <td className="border border-gray-300 p-2 text-xs sm:text-sm">
                     {order.items.map((item) => (
                       <div key={item.id}>
                         {item.name} (x{item.quantity})
                       </div>
                     ))}
                   </td>
-                  <td className="border border-gray-300 p-2">
+                  <td className="border border-gray-300 p-2 text-xs sm:text-sm">
                     ${order.totalAmount}
                   </td>
-                  <td className="border border-gray-300 p-2">Pending</td>
-                  <td className="border border-gray-300 p-2">
+                  <td className="border border-gray-300 p-2 text-xs sm:text-sm">
+                    Pending
+                  </td>{" "}
+                  <td className="border border-gray-300 p-2 text-xs sm:text-sm">
                     {order.address}
                   </td>
                 </tr>
