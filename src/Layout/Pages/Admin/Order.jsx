@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-
 const AdminOrders = () => {
   const axiossecure = useAxiosSecure();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -17,14 +15,12 @@ const AdminOrders = () => {
         setLoading(false);
       }
     };
-
     fetchOrders();
   }, [axiossecure]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
-
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Admin Orders</h1>
@@ -89,5 +85,4 @@ const AdminOrders = () => {
     </div>
   );
 };
-
 export default AdminOrders;
