@@ -9,31 +9,13 @@ const Hero = () => {
       {" "}
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper ">
         <SwiperSlide>
-          <img src="https://i.ibb.co.com/NjMhFsR/new7.jpg" alt="" />
+          <img src="/images/hero-banner.png" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.ibb.co.com/NjMhFsR/new7.jpg" alt="" />
+          <img src="/images/hero-banner2.png" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.ibb.co.com/NjMhFsR/new7.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co.com/NjMhFsR/new7.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co.com/NjMhFsR/new7.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co.com/NjMhFsR/new7.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co.com/NjMhFsR/new7.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co.com/NjMhFsR/new7.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ibb.co.com/NjMhFsR/new7.jpg" alt="" />
+          <img src="/images/hero-banner3.png" alt="" />
         </SwiperSlide>
       </Swiper>
     </div>
