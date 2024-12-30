@@ -43,11 +43,6 @@ const Navbar = () => {
               <Link to="/admin/orders">Admin Orders</Link>
             </li>
           )}
-          {user && user.email === "mr9374247@gmail.com" && (
-            <li className="hover:text-yellow-100 transition-colors duration-200">
-              <Link to="/admin/upload">Upload Product</Link>
-            </li>
-          )}
           <li
             onClick={handlelogout}
             className="hover:text-yellow-100 transition-colors duration-200"
@@ -64,7 +59,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="p-2">
+    // Change starts here: Add fixed positioning and background color
+    <div className="p-2 fixed top-0 left-0 right-0 z-50 bg-[rgba(66,42,43,255)]">
       <div className="flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <img src={img} alt="logo" className="w-24" />
@@ -77,10 +73,10 @@ const Navbar = () => {
         </div>
       </div>
       <div className={`md:hidden ${menuOpen ? "block" : "hidden"}`}>
-        {/* Mobile menu */}
         <div className="flex flex-col items-center">{navOptions}</div>
       </div>
     </div>
+    // Change ends here
   );
 };
 
