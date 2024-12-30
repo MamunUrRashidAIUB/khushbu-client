@@ -9,13 +9,25 @@ const Hero = () => {
       {" "}
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper ">
         <SwiperSlide>
-          <img src="/images/hero-banner.png" alt="" />
+          <img
+            src="/images/sameb2.png"
+            className="w-full  object-cover"
+            alt=""
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/images/hero-banner2.png" alt="" />
+          <img
+            src="/images/sameb1.png"
+            className="w-full  object-cover"
+            alt=""
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/images/hero-banner3.png" alt="" />
+          <img
+            src="/images/sameb3.png"
+            className="w-full  object-cover"
+            alt=""
+          />
         </SwiperSlide>
       </Swiper>
     </div>
