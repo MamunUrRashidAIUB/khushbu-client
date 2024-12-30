@@ -5,7 +5,7 @@ import { Pagination } from "swiper/modules";
 
 const Hero = () => {
   return (
-    <div className="pl-16 p-2">
+    <div className="lg:p-20 p-5">
       {" "}
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper ">
         <SwiperSlide>
