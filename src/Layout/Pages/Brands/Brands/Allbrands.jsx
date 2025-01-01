@@ -18,6 +18,7 @@ const Allbrands = ({ filteredProducts }) => {
             title={product.description}
             brand={product.brand}
             price={product.price}
+            variants={product.variants}
           />
         ))}
       </div>

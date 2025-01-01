@@ -3,13 +3,15 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useCart from "../../Hooks/useCart";
+import { useState } from "react";
 
-const Card = ({ name, image, title, brand, price, _id }) => {
+const Card = ({ name, image, title, brand, price, _id, variants }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const axiossecure = useAxiosSecure();
   const [, refetch] = useCart(user?.email);
+  const [selectedVariant, setSelectedVariant] = useState(variants?.[0] || null);
 
   const handleAddToCart = () => {
     if (user && user.email) {
@@ -20,7 +22,8 @@ const Card = ({ name, image, title, brand, price, _id }) => {
         image,
         title,
         brand,
-        price,
+        price: selectedVariant ? selectedVariant.price : price,
+        size: selectedVariant ? selectedVariant.size : "Default Size",
       };
 
       axiossecure
@@ -73,8 +76,28 @@ const Card = ({ name, image, title, brand, price, _id }) => {
         <p className="text-sm text-gray-300">{brand}</p>
         <p className="text-sm font-medium text-yellow-400">
           <span>Price: $</span>
-          {price}
+          {selectedVariant ? selectedVariant.price : price}
         </p>
+        {variants && variants.length > 0 && (
+          <div className="mt-2">
+            <label className="block text-sm font-medium mb-1">Variants</label>
+            <select
+              className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => {
+                const selected = variants.find(
+                  (variant) => variant.id === parseInt(e.target.value)
+                );
+                setSelectedVariant(selected);
+              }}
+            >
+              {variants.map((variant) => (
+                <option key={variant.id} value={variant.id}>
+                  {variant.size} - ${variant.price}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
         <div className="card-actions mt-auto">
           <button
             onClick={handleAddToCart}
