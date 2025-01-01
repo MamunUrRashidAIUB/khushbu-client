@@ -26,7 +26,6 @@ const Navbar = () => {
       <li className="hover:text-yellow-100 transition-colors duration-200">
         <Link to="/brands">Brands</Link>
       </li>
-
       <li className="bg-yellow-400 text-black px-2 rounded-md transition-colors duration-200">
         <Link to="dashboard/cart">
           <button className="flex gap-1 items-center justify-around">
@@ -35,7 +34,6 @@ const Navbar = () => {
           </button>
         </Link>
       </li>
-
       {user ? (
         <>
           {user.email === "mr9374247@gmail.com" && (
@@ -59,24 +57,30 @@ const Navbar = () => {
   );
 
   return (
-    // Change starts here: Add fixed positioning and background color
-    <div className="p-2 fixed top-0 left-0 right-0 z-50 bg-[rgba(66,42,43,255)]">
-      <div className="flex items-center justify-between">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-[rgba(66,42,43,255)] text-white">
+      <div className="container mx-auto flex items-center justify-between p-4">
         <Link to="/" className="flex items-center">
           <img src={img} alt="logo" className="w-24" />
         </Link>
         <div className="hidden md:flex items-center">{navOptions}</div>
         <div className="md:hidden">
-          <button className="text-black" onClick={() => setMenuOpen(!menuOpen)}>
+          <button className="text-white" onClick={() => setMenuOpen(!menuOpen)}>
             <FaBars />
           </button>
         </div>
       </div>
-      <div className={`md:hidden ${menuOpen ? "block" : "hidden"}`}>
-        <div className="flex flex-col items-center">{navOptions}</div>
+      <div
+        className={`md:hidden transition-all duration-300 ease-in-out ${
+          menuOpen
+            ? "max-h-screen opacity-100"
+            : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+      >
+        <div className="flex flex-col items-center bg-[rgba(66,42,43,255)] p-4">
+          {navOptions}
+        </div>
       </div>
     </div>
-    // Change ends here
   );
 };
 
