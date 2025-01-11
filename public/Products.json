@@ -28,8 +28,8 @@
   },
   {
     "id": 2,
-    "name": "Perfume 2",
-    "brand": "Brand A",
+    "name": "YSL",
+    "brand": "YSL",
     "price": 95.0,
     "description": "A spicy, bold scent.",
     "size": "100ml",
@@ -57,8 +57,8 @@
   },
   {
     "id": 3,
-    "name": "Perfume 3",
-    "brand": "Brand A",
+    "name": "",
+    "brand": "",
     "price": 120.0,
     "description": "A sweet floral fragrance.",
     "size": "75ml",
