@@ -18,6 +18,7 @@ const Navbar = () => {
       });
   };
 
+  
   const navOptions = (
     <ul className="flex flex-col md:flex-row gap-6 md:gap-8">
       <li className="hover:text-yellow-100 transition-colors duration-200">
