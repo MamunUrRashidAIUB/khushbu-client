@@ -9,37 +9,43 @@ const AdminUpload = () => {
   const [description, setDescription] = useState("");
   const [size, setSize] = useState("");
   const [category, setCategory] = useState("");
-  const [image, setImage] = useState(null);
   const axiossecure = useAxiosSecure();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("brand", brand);
-    formData.append("price", price);
-    formData.append("description", description);
-    formData.append("size", size);
-    formData.append("category", category);
-    formData.append("image", image);
+    // Prepare the product data as a JSON object
+    const productData = {
+      name,
+      brand,
+      price,
+      description,
+      size,
+      category,
+    };
 
     try {
-      const response = await axiossecure.post("/products", formData);
+      // Send the product data as JSON
+      const response = await axiossecure.post("/products", productData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
       if (response.data.success) {
         Swal.fire({
           title: "Success!",
           text: "Product uploaded successfully!",
           icon: "success",
         });
-        // Reset form
+
+        // Reset form after success
         setName("");
         setBrand("");
         setPrice("");
         setDescription("");
         setSize("");
         setCategory("");
-        setImage(null);
       }
     } catch (error) {
       console.error("Error uploading product:", error);
@@ -109,15 +115,6 @@ const AdminUpload = () => {
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="input input-bordered"
-          required
-        />
-      </div>
-      <div className="form-control mb-4">
-        <label className="label">Image</label>
-        <input
-          type="file"
-          onChange={(e) => setImage(e.target.files[0])}
           className="input input-bordered"
           required
         />
