@@ -16,7 +16,7 @@ const AdminLogin = () => {
       .then((result) => {
         const user = result.user;
         // Check if the user is an admin (you can implement your own logic here)
-        if (user.email === "admin@example.com") {
+        if (user.email === "mamungolumolu@gmail.com") {
           // Replace with your admin email
           navigate("/admin/orders"); // Redirect to admin orders page
         } else {

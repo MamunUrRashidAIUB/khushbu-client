@@ -38,7 +38,7 @@ const Login = () => {
         });
 
         // Check if the user is the admin
-        if (user.email === "mr9374247@gmail.com") {
+        if (user.email === "mamungolumolu@gmail.com") {
           // Replace with your admin email
           navigate("/admin/orders"); // Redirect to admin orders page
         } else {

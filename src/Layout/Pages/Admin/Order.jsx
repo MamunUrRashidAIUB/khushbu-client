@@ -22,7 +22,7 @@ const AdminOrders = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="p-4">
+    <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">Admin Orders</h1>
       {orders.length === 0 ? (
         <p>No orders found.</p>

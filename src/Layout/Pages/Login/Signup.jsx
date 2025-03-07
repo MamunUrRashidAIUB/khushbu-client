@@ -4,10 +4,8 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 
-
 const Signup = () => {
-
-  const  {
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -26,8 +24,6 @@ const Signup = () => {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
-
-
         navigate("/login"); // Redirect to login page after signup
       });
     });

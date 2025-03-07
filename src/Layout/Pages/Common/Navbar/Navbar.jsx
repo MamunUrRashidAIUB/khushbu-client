@@ -18,7 +18,6 @@ const Navbar = () => {
       });
   };
 
-  
   const navOptions = (
     <ul className="flex flex-col md:flex-row gap-6 md:gap-8">
       <li className="hover:text-yellow-100 transition-colors duration-200">
@@ -37,10 +36,15 @@ const Navbar = () => {
       </li>
       {user ? (
         <>
-          {user.email === "mr9374247@gmail.com" && (
-            <li className="hover:text-yellow-100 transition-colors duration-200">
-              <Link to="/admin/orders">Admin Orders</Link>
-            </li>
+          {user.email === "mamungolumolu@gmail.com" && (
+            <>
+              <li className="hover:text-yellow-100 transition-colors duration-200">
+                <Link to="/admin/upload">Admin Uploads</Link>
+              </li>
+              <li className="hover:text-yellow-100 transition-colors duration-200">
+                <Link to="/admin/orders">Admin Orders</Link>
+              </li>
+            </>
           )}
           <li
             onClick={handlelogout}
