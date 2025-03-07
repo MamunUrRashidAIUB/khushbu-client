@@ -17,7 +17,12 @@ const AdminUpload = () => {
     formData.append("image", image);
 
     try {
-      const response = await axiossecure.post("/products", formData);
+      const response = await axiossecure.post("/products", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       if (response.data.success) {
         Swal.fire({
           title: "Success!",
@@ -31,16 +36,18 @@ const AdminUpload = () => {
       }
     } catch (error) {
       console.error("Error uploading product:", error);
-      Swal.fire({
-        title: "Error!",
-        text: "Failed to upload product.",
-        icon: "error",
-      });
+        const errorMessage = error.response?.data?.message || "Failed to upload product.";
+        Swal.fire({
+          title: "Error!",
+          text: errorMessage,
+          icon: "error",
+        });
+
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4">
+    <form onSubmit={handleSubmit} className="p-10">
       <div className="form-control mb-4">
         <label className="label">Product Name</label>
         <input
