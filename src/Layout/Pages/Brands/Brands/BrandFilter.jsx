@@ -7,7 +7,7 @@ const BrandFilter = ({ onBrandSelect, onPriceFilter }) => {
   const brands = [...new Set(products.map((product) => product.brand))];
 
   return (
-    <div className="flex flex-col p-4 shadow-lg rounded-lg mb-4 w-full max-w-xs mx-auto sm:max-w-sm md:max-w-md lg:max-w-lg">
+    <div className="flex flex-col p-4 pt-20 shadow-lg rounded-lg mb-4 w-full max-w-xs mx-auto sm:max-w-sm md:max-w-md lg:max-w-lg">
       <h2 className="text-lg font-semibold mb-4 text-center sm:text-left">
         Filter Options
       </h2>
