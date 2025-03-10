@@ -74,17 +74,44 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu with Slide-In Transition */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
-          menuOpen
-            ? "max-h-screen opacity-100"
-            : "max-h-0 opacity-0 overflow-hidden"
-        }`}
+        className={`fixed inset-y-0 right-0 transform ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out z-40 bg-[rgba(66,42,43,255)] w-64 p-4 md:hidden`}
       >
-        <div className="flex flex-col items-center bg-[rgba(66,42,43,255)] p-4">
+        <button
+          className="text-white absolute top-4 left-4"
+          onClick={() => setMenuOpen(false)}
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+        <div className="flex flex-col items-start gap-6 mt-12">
           {navOptions}
         </div>
       </div>
+
+      {/* Overlay for Mobile Menu */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          onClick={() => setMenuOpen(false)}
+        ></div>
+      )}
     </div>
   );
 };

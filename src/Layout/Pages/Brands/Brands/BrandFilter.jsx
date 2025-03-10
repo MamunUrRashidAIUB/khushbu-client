@@ -58,7 +58,7 @@ const BrandFilter = ({ onBrandSelect, onPriceFilter }) => {
           </svg>
         </button>
 
-        <h2 className="text-lg font-semibold mb-4 text-center sm:text-left">
+        <h2 className="text-lg font-semibold mb-4 pt-20 text-center sm:text-left">
           Filter Options
         </h2>
 
