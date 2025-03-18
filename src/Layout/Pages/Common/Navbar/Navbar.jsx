@@ -75,7 +75,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu with Slide-In Transition */}
+      {/* Mobile Menu */}
       <div
         className={`fixed inset-y-0 right-0 transform ${
           menuOpen ? "translate-x-0" : "translate-x-full"
