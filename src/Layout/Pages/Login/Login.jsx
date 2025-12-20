@@ -11,10 +11,35 @@ const Login = () => {
   const location = useLocation();
 
   const handlegooglelogin = () => {
-    signInWithGoogle().then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
+    signInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login Success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        // Check if the user is the admin
+        if (user.email === "mamungolumolu@gmail.com") {
+          navigate("/admin/orders");
+        } else {
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((error) => {
+        console.error("Google login failed:", error.message);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Login Failed",
+          text: error.message,
+          showConfirmButton: true,
+        });
+      });
   };
 
   const from = location.state?.from?.pathname || "/";
