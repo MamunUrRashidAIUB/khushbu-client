@@ -2,7 +2,7 @@
 
 A modern, responsive React front-end for an e‑commerce site built with Vite, Tailwind CSS and Firebase. This repository contains the client application used to browse products, filter by brands, manage a shopping cart, and (for admins) upload products and view orders.
 
-**Live demo**: Not provided in this repo. Deploy to Vercel, Netlify or a static hosting provider to publish.
+**Live demo**: https://itskhushbu.netlify.app/
 
 **Tech Stack**
 - **Framework**: React 18 (Vite)
