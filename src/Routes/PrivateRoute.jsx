@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { Authcontext } from "../providers/AuthProviders";
 import { Navigate, useLocation } from "react-router-dom";
+import { isAdmin } from "../config/constants";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(Authcontext);
@@ -10,7 +11,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) {
     return <span className="loading loading-dots loading-lg"></span>;
   }
-  if (user && user.email === "mr9374247@gmail.com") {
+  if (user && isAdmin(user.email)) {
     // Check if the user is an admin
     return children;
   }

@@ -16,7 +16,6 @@ const Signup = () => {
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
       const user = result.user;
-      console.log(user);
       Swal.fire({
         position: "center",
         icon: "success",

@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { Authcontext } from "../../../../providers/AuthProviders";
 import useCart from "../../../../Hooks/useCart";
 import { FaBars, FaShoppingCart } from "react-icons/fa";
+import { isAdmin } from "../../../../config/constants";
 
 const Navbar = () => {
   const { user, logout } = useContext(Authcontext);
@@ -13,8 +14,8 @@ const Navbar = () => {
   const handlelogout = () => {
     logout()
       .then(() => {})
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        // Logout failed - handle silently or show notification
       });
   };
 
@@ -53,7 +54,7 @@ const Navbar = () => {
       </li>
       {user ? (
         <>
-          {user.email === "mamungolumolu@gmail.com" && (
+          {isAdmin(user.email) && (
             <>
               <li className="relative group w-full md:w-auto">
                 <Link 

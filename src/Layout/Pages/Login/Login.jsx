@@ -4,6 +4,8 @@ import { Authcontext } from "../../../providers/AuthProviders";
 import Swal from "sweetalert2";
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../../Hooks/useAuth";
+import { isAdmin } from "../../../config/constants";
+
 const Login = () => {
   const { signin } = useContext(Authcontext);
   const { signInWithGoogle } = useAuth();
@@ -14,7 +16,6 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
         Swal.fire({
           position: "center",
           icon: "success",
@@ -24,7 +25,7 @@ const Login = () => {
         });
 
         // Check if the user is the admin
-        if (user.email === "mamungolumolu@gmail.com") {
+        if (isAdmin(user.email)) {
           navigate("/admin/orders");
         } else {
           navigate(from, { replace: true });
@@ -53,7 +54,6 @@ const Login = () => {
     signin(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         Swal.fire({
           position: "center",
           icon: "success",
@@ -63,8 +63,7 @@ const Login = () => {
         });
 
         // Check if the user is the admin
-        if (user.email === "mamungolumolu@gmail.com") {
-          // Replace with your admin email
+        if (isAdmin(user.email)) {
           navigate("/admin/orders"); // Redirect to admin orders page
         } else {
           navigate(from, { replace: true }); // Redirect to user dashboard or home
