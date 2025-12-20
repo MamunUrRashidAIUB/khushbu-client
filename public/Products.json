@@ -1,0 +1,348 @@
+[
+  {
+    "id": 1,
+    "name": "Dunhill Fresh",
+    "brand": "Dunhill",
+    "price": 105.0,
+    "description": "A fresh, citrusy fragrance. Perfect for summer. ",
+    "size": "100ml",
+    "category": "Men's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "YSL",
+    "brand": "YSL",
+    "price": 95.0,
+    "description": "A spicy, bold scent.",
+    "size": "100ml",
+    "category": "Men's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.8,
+    "reviews": 210,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "",
+    "brand": "",
+    "price": 120.0,
+    "description": "A sweet floral fragrance.",
+    "size": "75ml",
+    "category": "Women's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.6,
+    "reviews": 98,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Perfume 4",
+    "brand": "Brand D",
+    "price": 89.0,
+    "description": "Citrusy scent for summer.",
+    "size": "100ml",
+    "category": "Men's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.3,
+    "reviews": 75,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Perfume 5",
+    "brand": "Brand E",
+    "price": 135.0,
+    "description": "A luxurious fragrance with deep notes.",
+    "size": "100ml",
+    "category": "Unisex",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.7,
+    "reviews": 189,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Perfume 6",
+    "brand": "Brand F",
+    "price": 150.0,
+    "description": "An iconic floral fragrance.",
+    "size": "100ml",
+    "category": "Women's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.9,
+    "reviews": 345,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Perfume 7",
+    "brand": "Brand G",
+    "price": 110.0,
+    "description": "Inspired by the Mediterranean sea.",
+    "size": "100ml",
+    "category": "Men's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.4,
+    "reviews": 162,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Perfume 8",
+    "brand": "Brand H",
+    "price": 115.0,
+    "description": "A sophisticated fragrance balancing light and dark.",
+    "size": "80ml",
+    "category": "Women's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.7,
+    "reviews": 220,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Perfume 9",
+    "brand": "Brand I",
+    "price": 130.0,
+    "description": "Aromatic with hints of citrus and wood.",
+    "size": "100ml",
+    "category": "Men's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.8,
+    "reviews": 270,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Perfume 10",
+    "brand": "Brand J",
+    "price": 145.0,
+    "description": "An explosive floral fragrance with jasmine.",
+    "size": "90ml",
+    "category": "Women's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.6,
+    "reviews": 200,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Perfume 11",
+    "brand": "Brand K",
+    "price": 90.0,
+    "description": "A light fragrance with modern style.",
+    "size": "100ml",
+    "category": "Women's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.2,
+    "reviews": 170,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Perfume 12",
+    "brand": "Brand L",
+    "price": 125.0,
+    "description": "A bold fragrance with unique appeal.",
+    "size": "100ml",
+    "category": "Men's",
+    "image": "https://i.ibb.co.com/swHv1cp/p23.jpg",
+    "rating": 4.5,
+    "reviews": 155,
+    "variants": [
+      {
+        "id": 1,
+        "size": "6ml",
+        "price": 105.0
+      },
+      {
+        "id": 2,
+        "size": "3ml",
+        "price": 65.0
+      },
+      {
+        "id": 3,
+        "size": "6ml",
+        "price": 65.0
+      }
+    ]
+  }
+]
