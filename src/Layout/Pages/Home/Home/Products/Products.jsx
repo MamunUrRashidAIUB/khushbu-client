@@ -14,13 +14,13 @@ const Products = () => {
   const uniqueCategories = [...new Set(categories)];
 
   return (
-    <Tabs className="flex justify-center items-center mt-5 flex-col">
-      <TabList className="flex justify-center mb-4">
+    <Tabs className="flex justify-center items-center mt-8 flex-col px-4">
+      <TabList className="flex justify-center gap-3 md:gap-6 mb-8 flex-wrap bg-gradient-to-r from-gray-100 to-gray-200 p-2 rounded-full shadow-lg">
         {uniqueCategories.map((category, index) => (
           <Tab
             key={index}
-            className="mx-4 cursor-pointer px-4 py-2 rounded-lg  transition duration-300"
-            selectedClassName="bg-orange-400 text-black font-bold"
+            className="cursor-pointer px-6 py-3 rounded-full text-gray-700 font-semibold text-base md:text-lg transition-all duration-300 hover:bg-white hover:shadow-md transform hover:scale-105 border-2 border-transparent"
+            selectedClassName="bg-gradient-to-r from-orange-400 to-pink-500 text-white font-bold shadow-xl border-2 border-white scale-105"
           >
             {category}
           </Tab>
@@ -28,8 +28,8 @@ const Products = () => {
       </TabList>
 
       {uniqueCategories.map((category, index) => (
-        <TabPanel key={index} className="text-center">
-          <ul className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <TabPanel key={index} className="text-center w-full max-w-7xl mx-auto px-4">
+          <ul className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {products
               .filter((product) => product.category === category)
               .map((filteredProduct) => (

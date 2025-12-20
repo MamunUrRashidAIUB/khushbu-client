@@ -62,27 +62,29 @@ const Card = ({ name, image, title, brand, price, _id, variants }) => {
   };
 
   return (
-    <div className="bg-amber-950 w-full md:w-40 lg:w-60 shadow-xl rounded-lg overflow-hidden flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
-      <figure className="mx-auto pt-5">
+    <div className="group bg-gradient-to-br from-amber-900 via-amber-950 to-stone-900 w-full shadow-lg rounded-2xl overflow-hidden flex flex-col transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 border border-amber-800/30">
+      <figure className="relative overflow-hidden bg-white/5 p-4">
         <img
           src={image}
           alt={name}
-          className="rounded-xl w-full h-40 object-cover lg:h-48"
+          className="rounded-xl w-full h-40 object-cover lg:h-48 transition-transform duration-500 group-hover:scale-110"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </figure>
-      <div className="card-body flex flex-col items-center text-center p-4 flex-grow">
-        <h2 className="text-lg font-semibold overflow-hidden">{name}</h2>
-        <p className="text-sm text-gray-300">{title}</p>
-        <p className="text-sm text-gray-300">{brand}</p>
-        <p className="text-sm font-medium text-yellow-400">
-          <span>Price: $</span>
-          {selectedVariant ? selectedVariant.price : price}
-        </p>
+      <div className="card-body flex flex-col items-center text-center p-4 flex-grow space-y-2">
+        <h2 className="text-lg font-bold text-white overflow-hidden line-clamp-2">{name}</h2>
+        <p className="text-xs text-amber-200/80 line-clamp-2">{title}</p>
+        {brand && <p className="text-xs text-amber-300/70 font-semibold">{brand}</p>}
+        <div className="flex items-center gap-1 mt-2">
+          <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
+            ${selectedVariant ? selectedVariant.price : price}
+          </span>
+        </div>
         {variants && variants.length > 0 && (
-          <div className="mt-2">
-            <label className="block text-sm font-medium mb-1">Variants</label>
+          <div className="mt-2 w-full">
+            <label className="block text-xs font-semibold mb-1.5 text-amber-200">Choose Size</label>
             <select
-              className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 bg-amber-900/50 border border-amber-700/50 text-white rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
               onChange={(e) => {
                 const selected = variants.find(
                   (variant) => variant.id === parseInt(e.target.value)
@@ -91,17 +93,17 @@ const Card = ({ name, image, title, brand, price, _id, variants }) => {
               }}
             >
               {variants.map((variant) => (
-                <option key={variant.id} value={variant.id}>
+                <option key={variant.id} value={variant.id} className="bg-amber-950">
                   {variant.size} - ${variant.price}
                 </option>
               ))}
             </select>
           </div>
         )}
-        <div className="card-actions mt-auto">
+        <div className="card-actions mt-auto pt-3 w-full">
           <button
             onClick={handleAddToCart}
-            className="p-2 px-4 text-white font-medium rounded-full transition-all duration-500 bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-600 hover:to-orange-400"
+            className="w-full py-2.5 px-4 text-white font-semibold rounded-full transition-all duration-300 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 shadow-lg hover:shadow-green-500/50 transform hover:scale-105 active:scale-95"
           >
             Add to cart
           </button>
