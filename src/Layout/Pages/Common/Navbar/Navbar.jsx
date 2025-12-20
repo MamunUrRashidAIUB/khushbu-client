@@ -19,18 +19,35 @@ const Navbar = () => {
   };
 
   const navOptions = (
-    <ul className="flex flex-col md:flex-row gap-6 md:gap-8">
-      <li className="hover:text-yellow-100 transition-colors duration-200">
-        <Link to="/">Home</Link>
+    <ul className="flex flex-col md:flex-row gap-4 md:gap-6 items-start md:items-center w-full md:w-auto">
+      <li className="relative group w-full md:w-auto">
+        <Link 
+          to="/" 
+          className="text-white text-lg font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-yellow-300 flex items-center w-full md:w-auto"
+          onClick={() => setMenuOpen(false)}
+        >
+          Home
+          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+        </Link>
       </li>
-      <li className="hover:text-yellow-100 transition-colors duration-200">
-        <Link to="/brands">Brands</Link>
+      <li className="relative group w-full md:w-auto">
+        <Link 
+          to="/brands" 
+          className="text-white text-lg font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-yellow-300 flex items-center w-full md:w-auto"
+          onClick={() => setMenuOpen(false)}
+        >
+          Brands
+          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+        </Link>
       </li>
-      <li className="bg-yellow-400 text-black px-2 rounded-md transition-colors duration-200">
-        <Link to="dashboard/cart">
-          <button className="flex gap-1 items-center justify-around">
-            <FaShoppingCart />
-            <div className="text-pink-600">{cart.length}</div>
+      <li className="relative w-full md:w-auto">
+        <Link to="dashboard/cart" onClick={() => setMenuOpen(false)}>
+          <button className="flex gap-2 items-center justify-center bg-gradient-to-r from-yellow-400 to-yellow-500 text-black text-base font-semibold px-4 py-2 rounded-full hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-yellow-500/50 hover:scale-105 transform w-full md:w-auto">
+            <FaShoppingCart className="text-xl" />
+            <span>Cart</span>
+            <div className="bg-pink-600 text-white text-sm font-bold rounded-full w-7 h-7 flex items-center justify-center animate-pulse">
+              {cart.length}
+            </div>
           </button>
         </Link>
       </li>
@@ -38,40 +55,72 @@ const Navbar = () => {
         <>
           {user.email === "mamungolumolu@gmail.com" && (
             <>
-              <li className="hover:text-yellow-100 transition-colors duration-200">
-                <Link to="/admin/upload">Admin Uploads</Link>
+              <li className="relative group w-full md:w-auto">
+                <Link 
+                  to="/admin/upload" 
+                  className="text-white text-lg font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-yellow-300 flex items-center w-full md:w-auto"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Admin Uploads
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+                </Link>
               </li>
-              <li className="hover:text-yellow-100 transition-colors duration-200">
-                <Link to="/admin/orders">Admin Orders</Link>
+              <li className="relative group w-full md:w-auto">
+                <Link 
+                  to="/admin/orders" 
+                  className="text-white text-lg font-medium px-4 py-2 rounded-lg transition-all duration-300 hover:bg-white/10 hover:text-yellow-300 flex items-center w-full md:w-auto"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Admin Orders
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-pink-500 group-hover:w-full transition-all duration-300"></span>
+                </Link>
               </li>
             </>
           )}
-          <li
-            onClick={handlelogout}
-            className="hover:text-yellow-100 transition-colors duration-200"
-          >
-            Logout
+          <li className="w-full md:w-auto">
+            <button
+              onClick={() => {
+                handlelogout();
+                setMenuOpen(false);
+              }}
+              className="text-white text-lg font-medium px-5 py-2 rounded-lg border-2 border-white/20 hover:border-red-400 hover:bg-red-500/20 hover:text-red-300 transition-all duration-300 hover:scale-105 transform w-full md:w-auto"
+            >
+              Logout
+            </button>
           </li>
         </>
       ) : (
-        <li className="hover:text-yellow-100 transition-colors duration-200">
-          <Link to="/login">Login</Link>
+        <li className="w-full md:w-auto">
+          <Link to="/login" onClick={() => setMenuOpen(false)}>
+            <button className="text-white text-lg font-medium px-5 py-2 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-pink-500/50 hover:scale-105 transform w-full md:w-auto">
+              Login
+            </button>
+          </Link>
         </li>
       )}
     </ul>
   );
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-[rgba(66,42,43,255)] text-white">
-      <div className="container mx-auto flex items-center justify-between p-4">
-        <Link to="/" className="flex items-center">
-          <img src={img} alt="logo" className="w-24" />
-        </Link>
-        <div className="hidden md:flex items-center">{navOptions}</div>
-        <div className="md:hidden">
-          <button className="text-white" onClick={() => setMenuOpen(!menuOpen)}>
-            <FaBars />
-          </button>
+    <>
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[rgba(66,42,43,0.95)] via-[rgba(80,50,55,0.95)] to-[rgba(66,42,43,0.95)] backdrop-blur-lg text-white shadow-lg border-b border-white/10">
+        <div className="container mx-auto flex items-center justify-between px-6 py-3">
+          <Link to="/" className="flex items-center group">
+            <img 
+              src={img} 
+              alt="logo" 
+              className="w-24 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 drop-shadow-lg" 
+            />
+          </Link>
+          <div className="hidden md:flex items-center">{navOptions}</div>
+          <div className="md:hidden">
+            <button 
+              className="text-white hover:bg-white/10 p-2 rounded-lg transition-all duration-200 hover:scale-110" 
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <FaBars className="text-xl" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -79,10 +128,10 @@ const Navbar = () => {
       <div
         className={`fixed inset-y-0 right-0 transform ${
           menuOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out z-40 bg-[rgba(66,42,43,255)] w-64 p-4 md:hidden`}
+        } transition-transform duration-300 ease-in-out z-[9999] bg-gradient-to-b from-[rgba(66,42,43,0.98)] to-[rgba(80,50,55,0.98)] backdrop-blur-xl w-80 max-w-[85vw] p-6 md:hidden shadow-2xl border-l border-white/10 overflow-y-auto`}
       >
         <button
-          className="text-white absolute top-4 left-4"
+          className="text-white absolute top-6 right-6 hover:bg-white/10 p-2 rounded-lg transition-all duration-200 hover:rotate-90"
           onClick={() => setMenuOpen(false)}
         >
           <svg
@@ -100,7 +149,7 @@ const Navbar = () => {
             ></path>
           </svg>
         </button>
-        <div className="flex flex-col items-start gap-6 mt-12">
+        <div className="flex flex-col items-stretch gap-4 mt-20">
           {navOptions}
         </div>
       </div>
@@ -108,11 +157,11 @@ const Navbar = () => {
       {/* Overlay for Mobile Menu */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9998] md:hidden transition-opacity duration-300"
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
-    </div>
+    </>
   );
 };
 
