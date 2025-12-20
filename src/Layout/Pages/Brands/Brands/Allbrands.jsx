@@ -12,7 +12,8 @@ const Allbrands = ({ filteredProducts }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
         {productsToDisplay.map((product) => (
           <Card
-            key={product.id}
+            key={product._id || product.id}
+            _id={product._id || product.id}
             name={product.name}
             image={product.image}
             title={product.description}

@@ -41,6 +41,15 @@ const Cart = () => {
       return;
     }
 
+    if (address.trim().length < 10) {
+      Swal.fire({
+        title: "Error!",
+        text: "Address must be at least 10 characters long.",
+        icon: "error",
+      });
+      return;
+    }
+
     const order = {
       email: user.email,
       items: cart.map((item) => ({
@@ -68,10 +77,10 @@ const Cart = () => {
         }
       })
       .catch((error) => {
-        console.error("Error placing order:", error);
+        const errorMessage = error.response?.data?.message || "Failed to place order";
         Swal.fire({
           title: "Error!",
-          text: "There was an issue placing your order.",
+          text: errorMessage,
           icon: "error",
         });
       });
@@ -243,7 +252,7 @@ const Cart = () => {
                 type="text"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                placeholder="Enter your delivery address"
+                placeholder="Enter your delivery address (min 10 characters)"
                 className="w-full bg-amber-900/50 border-2 border-amber-700/50 text-white placeholder-amber-200/40 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all mb-6 px-4 py-3 rounded-lg"
                 required
               />

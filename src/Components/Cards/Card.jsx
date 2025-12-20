@@ -16,14 +16,13 @@ const Card = ({ name, image, title, brand, price, _id, variants }) => {
   const handleAddToCart = () => {
     if (user && user.email) {
       const cartItem = {
-        menuId: _id,
+        productId: String(_id),
         email: user.email,
         name,
         image,
-        title,
-        brand,
         price: selectedVariant ? selectedVariant.price : price,
         size: selectedVariant ? selectedVariant.size : "Default Size",
+        quantity: 1,
       };
 
       axiossecure
@@ -42,7 +41,11 @@ const Card = ({ name, image, title, brand, price, _id, variants }) => {
           }
         })
         .catch((error) => {
-          console.error("Error adding to cart:", error);
+          Swal.fire({
+            title: "Error",
+            text: error.response?.data?.message || "Failed to add to cart",
+            icon: "error",
+          });
         });
     } else {
       Swal.fire({

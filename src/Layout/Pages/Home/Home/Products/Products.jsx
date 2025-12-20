@@ -34,10 +34,12 @@ const Products = () => {
               .filter((product) => product.category === category)
               .map((filteredProduct) => (
                 <Card
-                  key={filteredProduct.id}
+                  key={filteredProduct._id || filteredProduct.id}
+                  _id={filteredProduct._id || filteredProduct.id}
                   name={filteredProduct.name}
                   image={filteredProduct.image}
                   title={filteredProduct.description}
+                  brand={filteredProduct.brand}
                   price={filteredProduct.price}
                   variants={filteredProduct.variants}
                 />
